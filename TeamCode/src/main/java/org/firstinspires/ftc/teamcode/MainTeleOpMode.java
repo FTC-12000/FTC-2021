@@ -66,7 +66,6 @@ public class MainTeleOpMode extends OpMode
 
                 rightPower = (V + W) / 2;
                 leftPower = (V - W) / 2;
-
                 break;
         }
 
