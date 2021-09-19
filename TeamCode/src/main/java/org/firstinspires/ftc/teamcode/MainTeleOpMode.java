@@ -10,6 +10,8 @@ public class MainTeleOpMode extends OpMode
     private ElapsedTime runtime = new ElapsedTime();
     private Hardware robot = new Hardware();
 
+    private KonamiCode konamiCode = new KonamiCode();
+
     private enum DriveMode {
         DUAL_STICK,
         SINGLE_STICK
@@ -27,6 +29,9 @@ public class MainTeleOpMode extends OpMode
     @Override
     public void init_loop() {
         driveModeLoop();
+        if (konamiCode.loop(gamepad1)) {
+            dance();
+        }
     }
 
     // Code to run ONCE when the driver hits PLAY
@@ -53,9 +58,7 @@ public class MainTeleOpMode extends OpMode
                 rightPower = rightY;
                 break;
             case SINGLE_STICK:
-                // jarod
-                robot.leftDrive.setPower(-leftX);
-                robot.rightDrive.setPower(leftX);
+
                 break;
         }
 
@@ -79,22 +82,24 @@ public class MainTeleOpMode extends OpMode
             switch (driveMode) {
                 case DUAL_STICK:
                     driveMode = DriveMode.SINGLE_STICK;
-                    telemetry.addData("Drive Mode", "Single Stick");
                     break;
                 case SINGLE_STICK:
                     driveMode = DriveMode.DUAL_STICK;
-                    telemetry.addData("Drive Mode", "Dual Stick");
-                    break;
-            }
-        } else {
-            switch (driveMode) {
-                case DUAL_STICK:
-                    telemetry.addData("Drive Mode", "Dual Stick");
-                    break;
-                case SINGLE_STICK:
-                    telemetry.addData("Drive Mode", "Single Stick");
                     break;
             }
         }
+
+        switch (driveMode) {
+            case DUAL_STICK:
+                telemetry.addData("Drive Mode", "Dual Stick");
+                break;
+            case SINGLE_STICK:
+                telemetry.addData("Drive Mode", "Single Stick (Not Working)");
+                break;
+        }
+    }
+
+    private void dance() {
+
     }
 }
