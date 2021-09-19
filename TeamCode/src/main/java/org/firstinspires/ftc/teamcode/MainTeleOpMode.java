@@ -49,7 +49,7 @@ public class MainTeleOpMode extends OpMode
 
         float leftY = -gamepad1.left_stick_y;
         float rightY = -gamepad1.right_stick_y;
-        float leftX = gamepad1.left_stick_x;
+        float leftX = -gamepad1.left_stick_x;
 
         float leftPower = 0;
         float rightPower = 0;
