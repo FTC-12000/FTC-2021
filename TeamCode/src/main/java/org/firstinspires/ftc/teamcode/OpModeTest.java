@@ -103,13 +103,13 @@ public class OpModeTest extends OpMode
      */
     @Override
     public void loop() {
-        double left = -gamepad1.left_stick_y;
-        double right = -gamepad1.right_stick_y;
+        float leftY = -gamepad1.left_stick_y;
+        float rightY = -gamepad1.right_stick_y;
 
         switch (driveMode) {
             case DUAL_STICK:
-                robot.leftDrive.setPower(left);
-                robot.rightDrive.setPower(right);
+                robot.leftDrive.setPower(leftY);
+                robot.rightDrive.setPower(rightY);
                 break;
             case SINGLE_STICK:
                 //jarod
@@ -117,7 +117,7 @@ public class OpModeTest extends OpMode
         }
 
         telemetry.addData("Status", "Run Time: " + runtime.toString());
-        telemetry.addData("Motors", "left (%.2f), right (%.2f)", left, right);
+        telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftY, rightY);
     }
 
     /*
