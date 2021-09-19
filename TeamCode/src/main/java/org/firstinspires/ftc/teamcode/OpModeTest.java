@@ -68,6 +68,7 @@ public class OpModeTest extends OpMode
         telemetry.addData("Status", "Initializing Hardware");
         robot.init(hardwareMap);
         telemetry.addData("Status", "Successfully Initialized Hardware");
+        telemetry.addData("Drive Mode", "Dual Stick");
     }
 
     //Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAY
@@ -77,9 +78,11 @@ public class OpModeTest extends OpMode
             switch (driveMode) {
                 case DUAL_STICK:
                     driveMode = DriveMode.SINGLE_STICK;
+                    telemetry.addData("Drive Mode", "Single Stick");
                     break;
                 case SINGLE_STICK:
                     driveMode = DriveMode.DUAL_STICK;
+                    telemetry.addData("Drive Mode", "Dual Stick");
                     break;
             }
         }
