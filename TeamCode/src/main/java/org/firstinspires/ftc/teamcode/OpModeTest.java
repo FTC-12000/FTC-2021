@@ -105,6 +105,7 @@ public class OpModeTest extends OpMode
     public void loop() {
         float leftY = -gamepad1.left_stick_y;
         float rightY = -gamepad1.right_stick_y;
+        float leftX = gamepad1.left_stick_x;
 
         switch (driveMode) {
             case DUAL_STICK:
@@ -113,6 +114,8 @@ public class OpModeTest extends OpMode
                 break;
             case SINGLE_STICK:
                 //jarod
+                robot.leftDrive.setPower(-leftX);
+                robot.rightDrive.setPower(leftX);
                 break;
         }
 
