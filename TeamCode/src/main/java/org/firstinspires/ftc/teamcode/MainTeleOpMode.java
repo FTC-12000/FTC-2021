@@ -53,6 +53,8 @@ public class MainTeleOpMode extends OpMode
 
         float leftPower = 0;
         float rightPower = 0;
+        float forwardPower = 0;
+        float reversePower = 0;
 
         switch (driveMode) {
             case DUAL_STICK:
@@ -62,7 +64,8 @@ public class MainTeleOpMode extends OpMode
             case SINGLE_STICK:
                 leftPower = -leftX;
                 rightPower = leftX;
-
+                forwardPower = leftY;
+                reversePower = -leftY;
                 break;
         }
 
@@ -98,7 +101,7 @@ public class MainTeleOpMode extends OpMode
                 telemetry.addData("Drive Mode", "Dual Stick");
                 break;
             case SINGLE_STICK:
-                telemetry.addData("Drive Mode", "Single Stick (Not Working)");
+                telemetry.addData("Drive Mode", "Single Stick (Experimental");
                 break;
         }
     }
