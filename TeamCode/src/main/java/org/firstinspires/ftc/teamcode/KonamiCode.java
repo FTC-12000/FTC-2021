@@ -4,6 +4,8 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 public class KonamiCode {
     boolean up, up2, down, down2, left, right, left2, right2, b, a = false;
+    int direction = 1;
+    int loop = 0;
 
     public boolean loop(Gamepad gamepad) {
         if (up) {
@@ -66,5 +68,23 @@ public class KonamiCode {
             up = true;
         }
         return false;
+    }
+
+    public void dance(Robot robot) {
+        loop++;
+        if (loop == 100) {
+            switch (direction) {
+                case 1:
+                    direction = -1;
+                    break;
+                case -1:
+                    direction = 1;
+                    break;
+            }
+            loop = 0;
+        }
+
+        robot.leftDrive.setPower(direction);
+        robot.rightDrive.setPower(-direction);
     }
 }
