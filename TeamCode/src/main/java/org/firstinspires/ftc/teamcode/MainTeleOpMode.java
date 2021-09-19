@@ -60,6 +60,8 @@ public class MainTeleOpMode extends OpMode
                 rightPower = rightY;
                 break;
             case SINGLE_STICK:
+                leftPower = -leftX;
+                rightPower = leftX;
 
                 break;
         }
