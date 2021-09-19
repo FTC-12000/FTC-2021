@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp(name="Main", group="12000")
+@TeleOp(name = "Main", group = "tele")
 public class MainTeleOpMode extends OpMode
 {
     private final ElapsedTime runtime = new ElapsedTime();
