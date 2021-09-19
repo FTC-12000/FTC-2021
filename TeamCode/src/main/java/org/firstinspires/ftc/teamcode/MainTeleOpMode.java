@@ -11,6 +11,7 @@ public class MainTeleOpMode extends OpMode
     private Hardware robot = new Hardware();
 
     private KonamiCode konamiCode = new KonamiCode();
+    int danceDir = 1;
 
     private enum DriveMode {
         DUAL_STICK,
@@ -30,6 +31,7 @@ public class MainTeleOpMode extends OpMode
     public void init_loop() {
         driveModeLoop();
         if (konamiCode.loop(gamepad1)) {
+            telemetry.addData("Status", "Dancing");
             dance();
         }
     }
@@ -100,6 +102,16 @@ public class MainTeleOpMode extends OpMode
     }
 
     private void dance() {
+        if (((int) runtime.time()) % 3 == 0) {
+            switch (danceDir) {
+                case 1:
+                    danceDir = -1;
+                case -1:
+                    danceDir = 1;
+            }
+        }
 
+        robot.leftDrive.setPower(danceDir);
+        robot.rightDrive.setPower(-danceDir);
     }
 }
