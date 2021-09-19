@@ -101,13 +101,13 @@ public class OpModeTest extends OpMode
         float rightY = -gamepad1.right_stick_y;
         float leftX = gamepad1.left_stick_x;
 
-        float leftPower;
-        float rightPower;
+        float leftPower = 0;
+        float rightPower = 0;
 
         switch (driveMode) {
             case DUAL_STICK:
-                robot.leftDrive.setPower(leftY);
-                robot.rightDrive.setPower(rightY);
+                leftPower = leftY;
+                rightPower = rightY;
                 break;
             case SINGLE_STICK:
                 //jarod
@@ -116,8 +116,12 @@ public class OpModeTest extends OpMode
                 break;
         }
 
+
+        robot.leftDrive.setPower(leftPower);
+        robot.rightDrive.setPower(rightPower);
+
         telemetry.addData("Status", "Run Time: " + runtime.toString());
-        telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftY, rightY);
+        telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
     }
 
     //Code to run ONCE after the driver hits STOP
