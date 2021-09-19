@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-@Autonomous(name = "Main", group = "auto")
+@Autonomous(name = "Main: Auto", group = "auto")
 public class MainAutoOpMode extends OpMode {
     @Override
     public void init() {

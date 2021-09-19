@@ -72,7 +72,7 @@ public class KonamiCode {
 
     public void dance(Robot robot) {
         loop++;
-        if (loop == 100) {
+        if (loop == 250) {
             switch (direction) {
                 case 1:
                     direction = -1;

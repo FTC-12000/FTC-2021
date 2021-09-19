@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp(name = "Main", group = "tele")
+@TeleOp(name = "Main: TeleOp", group = "12000")
 public class MainTeleOpMode extends OpMode
 {
     private final ElapsedTime runtime = new ElapsedTime();
@@ -53,8 +53,6 @@ public class MainTeleOpMode extends OpMode
 
         float leftPower = 0;
         float rightPower = 0;
-        float forwardPower = 0;
-        float reversePower = 0;
 
         switch (driveMode) {
             case DUAL_STICK:
@@ -62,13 +60,15 @@ public class MainTeleOpMode extends OpMode
                 rightPower = rightY;
                 break;
             case SINGLE_STICK:
-                leftPower = -leftX;
-                rightPower = leftX;
-                forwardPower = leftY;
-                reversePower = -leftY;
+                leftX = -leftX;
+                float V = (100 - Math.abs(leftX)) * (leftY / 100) + leftY;
+                float W = (100 - Math.abs(leftY)) * (leftX/100) + leftX;
+
+                rightPower = (V + W) / 2;
+                leftPower = (V - W) / 2;
+
                 break;
         }
-
 
         robot.leftDrive.setPower(leftPower);
         robot.rightDrive.setPower(rightPower);
@@ -101,7 +101,7 @@ public class MainTeleOpMode extends OpMode
                 telemetry.addData("Drive Mode", "Dual Stick");
                 break;
             case SINGLE_STICK:
-                telemetry.addData("Drive Mode", "Single Stick (Experimental");
+                telemetry.addData("Drive Mode", "Single Stick");
                 break;
         }
     }
