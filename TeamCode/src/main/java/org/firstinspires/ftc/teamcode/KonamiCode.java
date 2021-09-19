@@ -21,53 +21,71 @@ public class KonamiCode {
                                                 return true;
                                             } else if (gamepad.a) {
                                                 a = true;
-                                            } else if (!gamepad.atRest()) {
+                                            } else if (buttonPressed(gamepad)) {
                                                 up = false;
                                             }
                                         } else if (gamepad.b) {
                                             b = true;
-                                        } else if (!gamepad.atRest()) {
+                                        } else if (buttonPressed(gamepad)) {
                                             up = false;
                                         }
                                     } else if (gamepad.dpad_right) {
                                         right2 = true;
-                                    } else if (!gamepad.atRest()) {
+                                    } else if (buttonPressed(gamepad)) {
                                         up = false;
                                     }
                                 } else if (gamepad.dpad_left) {
                                     left2 = true;
-                                } else if (!gamepad.atRest()) {
+                                } else if (buttonPressed(gamepad)) {
                                     up = false;
                                 }
                             } else if (gamepad.dpad_right) {
                                 right = true;
-                            } else if (!gamepad.atRest()) {
+                            } else if (buttonPressed(gamepad)) {
                                 up = false;
                             }
                         } else if (gamepad.dpad_left) {
                             left = true;
-                        } else if (!gamepad.atRest()) {
+                        } else if (buttonPressed(gamepad)) {
                             up = false;
                         }
                     } else if (gamepad.dpad_down) {
                         down2 = true;
-                    } else if (!gamepad.atRest()) {
+                    } else if (buttonPressed(gamepad)) {
                         up = false;
                     }
                 } else if (gamepad.dpad_down) {
                     down = true;
-                } else if (!gamepad.atRest()) {
+                } else if (buttonPressed(gamepad)) {
                     up = false;
                 }
             } else if (gamepad.dpad_up) {
                 up2 = true;
-            } else if (!gamepad.atRest()) {
+            } else if (buttonPressed(gamepad)) {
                 up = false;
             }
         } else if (gamepad.dpad_up) {
             up = true;
         }
+
+        if (!up) {
+            up2 = false;
+            down = false;
+            down2 = false;
+            left = false;
+            right = false;
+            left2 = false;
+            right2 = false;
+            b = false;
+            a = false;
+        }
+
         return false;
+    }
+
+    public boolean buttonPressed(Gamepad gamepad) {
+        // this is the worst line of code ive ever written
+        return (gamepad.dpad_up && gamepad.dpad_down && gamepad.dpad_left && gamepad.dpad_right && gamepad.a && gamepad.b && gamepad.x && gamepad.y && gamepad.left_bumper && (gamepad.left_trigger != 0) && gamepad.right_bumper && (gamepad.right_trigger != 0) && gamepad.left_stick_button && gamepad.right_stick_button && gamepad.back && gamepad.start && gamepad.atRest());
     }
 
     public void dance(Robot robot) {
