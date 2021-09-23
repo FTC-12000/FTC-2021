@@ -4,6 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import java.util.Set;
+
 @TeleOp(name = "Main: TeleOp", group = "12000")
 public class MainTeleOpMode extends OpMode
 {
@@ -11,28 +13,24 @@ public class MainTeleOpMode extends OpMode
     private final Robot robot = new Robot();
 
     private final KonamiCode konamiCode = new KonamiCode();
-
-    private enum DriveMode {
-        DUAL_STICK,
-        SINGLE_STICK
-    }
-    private DriveMode driveMode = DriveMode.DUAL_STICK;
+    private Settings settings;
+    private int loop = 0;
 
     // Code to run ONCE when the driver hits INIT
     @Override
     public void init() {
         robot.init(hardwareMap);
-        telemetry.addData("Drive Mode", "Dual Stick");
+        settings = new Settings(telemetry, gamepad1);
     }
 
     // Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAY
     @Override
     public void init_loop() {
         if (konamiCode.loop(gamepad1)) {
-            telemetry.addData("Status", "Dancing");
+            telemetry.addData("Dancing", ")");
             konamiCode.dance(robot);
         } else {
-            driveModeLoop();
+            settings.loop(); //broken!
         }
     }
 
@@ -45,21 +43,20 @@ public class MainTeleOpMode extends OpMode
     // Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP
     @Override
     public void loop() {
-        driveModeLoop();
-
         float leftY = -gamepad1.left_stick_y;
         float rightY = -gamepad1.right_stick_y;
         float leftX = -gamepad1.left_stick_x;
+        float rightX = -gamepad1.right_stick_x;
 
         float leftPower = 0;
         float rightPower = 0;
 
-        switch (driveMode) {
-            case DUAL_STICK:
+        switch (settings.getSetting("drive_mode")) {
+            case 0: // single stick
                 leftPower = leftY;
                 rightPower = rightY;
                 break;
-            case SINGLE_STICK:
+            case 1: // dual stick
                 leftX = -leftX;
                 float V = (100 - Math.abs(leftX)) * (leftY / 100) + leftY;
                 float W = (100 - Math.abs(leftY)) * (leftX/100) + leftX;
@@ -74,34 +71,21 @@ public class MainTeleOpMode extends OpMode
 
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
+
+        robot.armBase.setPower(gamepad1.right_trigger - gamepad1.left_trigger);
+
+
+        if (loop > 250 && (gamepad1.a || gamepad1.b || gamepad1.x || gamepad1.y)) {
+            robot.arm.toggleGrab();
+            loop = 0;
+        }
+
+        loop++;
     }
 
     // Code to run ONCE after the driver hits STOP
     @Override
     public void stop() {
         
-    }
-
-    // this isn't very efficient - Too Bad!
-    private void driveModeLoop() {
-        if (gamepad1.back) {
-            switch (driveMode) {
-                case DUAL_STICK:
-                    driveMode = DriveMode.SINGLE_STICK;
-                    break;
-                case SINGLE_STICK:
-                    driveMode = DriveMode.DUAL_STICK;
-                    break;
-            }
-        }
-
-        switch (driveMode) {
-            case DUAL_STICK:
-                telemetry.addData("Drive Mode", "Dual Stick");
-                break;
-            case SINGLE_STICK:
-                telemetry.addData("Drive Mode", "Single Stick");
-                break;
-        }
     }
 }

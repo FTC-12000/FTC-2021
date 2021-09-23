@@ -5,6 +5,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class Robot {
+    public Arm arm = new Arm(this);
+
     public DcMotor leftDrive;
     public DcMotor rightDrive;
 
@@ -18,9 +20,7 @@ public class Robot {
         leftDrive.setDirection(DcMotor.Direction.FORWARD);
         rightDrive.setDirection(DcMotor.Direction.REVERSE);
 
-        /* Arm hardware, not built yet
-        armGrabber = hardwareMap.get(DcMotor.class, "arm_base");
+        armBase = hardwareMap.get(DcMotor.class, "arm_base");
         armGrabber = hardwareMap.get(Servo.class, "arm_grabber");
-        */
     }
 }

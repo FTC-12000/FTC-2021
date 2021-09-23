@@ -3,69 +3,72 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 public class KonamiCode {
-    boolean up, up2, down, down2, left, right, left2, right2, b, a = false;
+    boolean dancing, up, up2, down, down2, left, right, left2, right2, b, a = false;
     int direction = 1;
     int loop = 0;
 
     public boolean loop(Gamepad gamepad) {
-        if (up) {
-            if (up2) {
-                if (down) {
-                    if (down2) {
-                        if (left) {
-                            if (right) {
-                                if (left2) {
-                                    if (right2) {
-                                        if (b) {
-                                            if (a) {
-                                                return true;
-                                            } else if (gamepad.a) {
-                                                a = true;
+        if (!dancing) {
+            if (up) {
+                if (up2) {
+                    if (down) {
+                        if (down2) {
+                            if (left) {
+                                if (right) {
+                                    if (left2) {
+                                        if (right2) {
+                                            if (b) {
+                                                if (a) {
+                                                    dancing = true;
+                                                    return true;
+                                                } else if (gamepad.a) {
+                                                    a = true;
+                                                } else if (buttonPressed(gamepad)) {
+                                                    up = false;
+                                                }
+                                            } else if (gamepad.b) {
+                                                b = true;
                                             } else if (buttonPressed(gamepad)) {
                                                 up = false;
                                             }
-                                        } else if (gamepad.b) {
-                                            b = true;
+                                        } else if (gamepad.dpad_right) {
+                                            right2 = true;
                                         } else if (buttonPressed(gamepad)) {
                                             up = false;
                                         }
-                                    } else if (gamepad.dpad_right) {
-                                        right2 = true;
+                                    } else if (gamepad.dpad_left) {
+                                        left2 = true;
                                     } else if (buttonPressed(gamepad)) {
                                         up = false;
                                     }
-                                } else if (gamepad.dpad_left) {
-                                    left2 = true;
+                                } else if (gamepad.dpad_right) {
+                                    right = true;
                                 } else if (buttonPressed(gamepad)) {
                                     up = false;
                                 }
-                            } else if (gamepad.dpad_right) {
-                                right = true;
+                            } else if (gamepad.dpad_left) {
+                                left = true;
                             } else if (buttonPressed(gamepad)) {
                                 up = false;
                             }
-                        } else if (gamepad.dpad_left) {
-                            left = true;
+                        } else if (gamepad.dpad_down) {
+                            down2 = true;
                         } else if (buttonPressed(gamepad)) {
                             up = false;
                         }
                     } else if (gamepad.dpad_down) {
-                        down2 = true;
+                        down = true;
                     } else if (buttonPressed(gamepad)) {
                         up = false;
                     }
-                } else if (gamepad.dpad_down) {
-                    down = true;
+                } else if (gamepad.dpad_up) {
+                    up2 = true;
                 } else if (buttonPressed(gamepad)) {
                     up = false;
                 }
             } else if (gamepad.dpad_up) {
-                up2 = true;
-            } else if (buttonPressed(gamepad)) {
-                up = false;
+                up = true;
             }
-        } else if (gamepad.dpad_up) {
-            up = true;
         }
 
         if (!up) {

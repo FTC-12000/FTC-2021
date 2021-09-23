@@ -1,12 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
 public class Arm {
-    private Robot robot;
+    private final Robot robot;
 
     private boolean grabberClosed;
 
-    private final double OPEN_POS = 0;
-    private final double CLOSED_POS = 1;
+    private static final double OPEN_POS = 0;
+    private static final double CLOSED_POS = 0.5;
 
     public Arm(Robot robot) {
         this.robot = robot;
@@ -15,8 +15,10 @@ public class Arm {
     public void toggleGrab() {
         if (grabberClosed) {
             robot.armGrabber.setPosition(OPEN_POS);
+            grabberClosed = false;
         } else {
             robot.armGrabber.setPosition(CLOSED_POS);
+            grabberClosed = true;
         }
     }
 
