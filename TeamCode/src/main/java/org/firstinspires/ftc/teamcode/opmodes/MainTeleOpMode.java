@@ -6,17 +6,14 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.fun.KonamiCode;
 import org.firstinspires.ftc.teamcode.hardware.Robot;
-import org.firstinspires.ftc.teamcode.settings.Setting;
 import org.firstinspires.ftc.teamcode.settings.SettingUtil;
 import org.firstinspires.ftc.teamcode.settings.SettingsMenu;
-
-import java.util.ArrayList;
 
 @TeleOp(name = "Main: TeleOp", group = "12000")
 public class MainTeleOpMode extends OpMode
 {
     private final ElapsedTime runtime = new ElapsedTime();
-    private final Robot robot = new Robot();
+    private final Robot robot = new Robot(hardwareMap);
 
     private final KonamiCode konamiCode = new KonamiCode();
     private SettingsMenu settings;
@@ -78,7 +75,7 @@ public class MainTeleOpMode extends OpMode
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
 
-        robot.armBase.setPower(gamepad1.right_trigger - gamepad1.left_trigger);
+        robot.arm.armBase.setPower(gamepad1.right_trigger - gamepad1.left_trigger);
 
 
         if (loop > 250 && (gamepad1.a || gamepad1.b || gamepad1.x || gamepad1.y)) {

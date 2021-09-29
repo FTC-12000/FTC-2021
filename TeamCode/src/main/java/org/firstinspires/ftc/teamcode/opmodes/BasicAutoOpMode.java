@@ -12,7 +12,7 @@ public class BasicAutoOpMode extends OpMode {
     private final float DRIVE_TIME = 6.0f;
 
     private final ElapsedTime runtime = new ElapsedTime();
-    private final Robot robot = new Robot();
+    private final Robot robot = new Robot(hardwareMap);
 
     @Override
     public void init() {

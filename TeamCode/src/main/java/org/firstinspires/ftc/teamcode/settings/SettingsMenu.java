@@ -6,10 +6,6 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.IndexedHashMap;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 
 public class SettingsMenu {
     private IndexedHashMap<String, Setting> settings = new IndexedHashMap<>();
