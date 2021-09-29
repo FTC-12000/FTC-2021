@@ -12,9 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class SettingsMenu {
-    private IndexedHashMap<String, Integer> settings = new IndexedHashMap<>();
-    private HashMap<String, Integer> maxValues = new HashMap<>();
-    private HashMap<String, HashMap<Integer, String>> translation = new HashMap<>();
+    private IndexedHashMap<String, Setting> settings = new IndexedHashMap<>();
 
     private Telemetry telemetry;
     private Gamepad gamepad;
@@ -23,33 +21,21 @@ public class SettingsMenu {
     private int inputDelayLoop;
 
     public int getSetting(String key) {
-        return settings.get(key);
+        return settings.get(key).value;
     }
     
-    public SettingsMenu(Telemetry telemetry, Gamepad gamepad) {
+    public SettingsMenu(ArrayList<Setting> settings, Telemetry telemetry, Gamepad gamepad) {
         this.telemetry = telemetry;
         this.gamepad = gamepad;
-        this.selected = settings.keys.get(0);
+        this.selected = settings.get(0).id;
         this.inputDelayLoop = 0;
 
-        HashMap<Integer, String> map;
+        for (Setting setting : settings) {
+            this.settings.put(setting.id, setting);
+        }
 
-        map = new HashMap<>();
-        map.put(-1, "Drive Mode");
-        map.put(1, "Dual Stick");
-        map.put(2, "Single Stick");
-        settings.put("drive_mode", 1);
-        maxValues.put("drive_mode", 2);
-        translation.put("drive_mode", map);
-
-        map = new HashMap<>();
-        map.put(-1, "Test Setting");
-        map.put(1, "Test Option 1");
-        map.put(2, "Test Option 2");
-        map.put(3, "Test Option 3");
-        settings.put("test_setting", 1);
-        maxValues.put("test_setting", 3);
-        translation.put("test_setting", map);
+        System.out.println(this.settings.getByIndex(0).translation);
+        System.out.println(this.settings.getByIndex(1).translation);
     }
 
     public void loop() {
@@ -60,20 +46,24 @@ public class SettingsMenu {
     private void handleInput() {
         if (inputDelayLoop > 150) {
             if (gamepad.dpad_right) {
-                int setting = settings.get(selected) + 1;
-                if (setting <= maxValues.get(selected)) {
-                    settings.put(selected, setting);
+                Setting setting = settings.get(selected);
+                int value = setting.value + 1;
+                if (value < setting.max) { //i feel like this is wrong, cant debug rn
+                    setting.value = value;
                 } else {
-                    settings.put(selected, 1);
+                    setting.value = 0;
                 }
+                settings.put(selected, setting);
                 inputDelayLoop = 0;
             } else if (gamepad.dpad_left) {
-                int setting = settings.get(selected) - 1;
-                if (setting >= 1) {
-                    settings.put(selected, setting);
+                Setting setting = settings.get(selected);
+                int value = setting.value - 1;
+                if (value >= 0) {
+                    setting.value = value;
                 } else {
-                    settings.put(selected, maxValues.get(selected));
+                    setting.value = setting.max - 1;
                 }
+                settings.put(selected, setting);
                 inputDelayLoop = 0;
             } else if (gamepad.dpad_up) {
                 int index = settings.keys.indexOf(selected) + 1;
@@ -97,16 +87,14 @@ public class SettingsMenu {
 
     private void display() {
         telemetry.clear();
-        System.out.println("newline");
         telemetry.addData("Settings", "");
         for (String key : settings.keys) {
-            System.out.println(key);
-            String line = translation.get(key).get(settings.get(key));
+            String line = settings.get(key).translation.get(settings.get(key).value);
 
             if (key.equals(selected)) {
                 line += " <-";
             }
-            telemetry.addData(translation.get(key).get(-1), line);
+            telemetry.addData(settings.get(key).name, line);
         }
     }
 }
