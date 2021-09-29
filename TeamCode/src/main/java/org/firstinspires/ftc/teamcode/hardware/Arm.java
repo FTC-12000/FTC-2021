@@ -1,4 +1,6 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.hardware;
+
+import org.firstinspires.ftc.teamcode.hardware.Robot;
 
 public class Arm {
     private final Robot robot;
@@ -24,10 +26,6 @@ public class Arm {
 
     public void setGrabAmount(double amount) {
         robot.armGrabber.setPosition((amount - CLOSED_POS) / (OPEN_POS - CLOSED_POS));
-        if (robot.armGrabber.getPosition() == CLOSED_POS) {
-            grabberClosed = true;
-        } else {
-            grabberClosed = false;
-        }
+        grabberClosed = robot.armGrabber.getPosition() == CLOSED_POS;
     }
 }

@@ -1,6 +1,8 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.fun;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
+
+import org.firstinspires.ftc.teamcode.hardware.Robot;
 
 public class KonamiCode {
     boolean dancing, up, up2, down, down2, left, right, left2, right2, b, a = false;

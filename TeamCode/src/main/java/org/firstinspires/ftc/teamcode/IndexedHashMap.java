@@ -11,7 +11,9 @@ public class IndexedHashMap<K, V> extends HashMap<K, V> {
     @Nullable
     @Override
     public V put(K key, V value) {
-        keys.add(key);
+        if (!keys.contains(key)) {
+            keys.add(key);
+        }
         return super.put(key, value);
     }
 

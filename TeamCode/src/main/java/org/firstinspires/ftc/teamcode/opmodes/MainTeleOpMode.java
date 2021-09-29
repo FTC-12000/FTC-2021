@@ -1,10 +1,12 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import java.util.Set;
+import org.firstinspires.ftc.teamcode.fun.KonamiCode;
+import org.firstinspires.ftc.teamcode.hardware.Robot;
+import org.firstinspires.ftc.teamcode.settings.SettingsMenu;
 
 @TeleOp(name = "Main: TeleOp", group = "12000")
 public class MainTeleOpMode extends OpMode
@@ -13,14 +15,14 @@ public class MainTeleOpMode extends OpMode
     private final Robot robot = new Robot();
 
     private final KonamiCode konamiCode = new KonamiCode();
-    private Settings settings;
+    private SettingsMenu settings;
     private int loop = 0;
 
     // Code to run ONCE when the driver hits INIT
     @Override
     public void init() {
         robot.init(hardwareMap);
-        settings = new Settings(telemetry, gamepad1);
+        settings = new SettingsMenu(telemetry, gamepad1);
     }
 
     // Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAY
