@@ -14,9 +14,9 @@ public class MainTeleOpMode extends OpMode
 {
     private final ElapsedTime runtime = new ElapsedTime();
     private final Robot robot = new Robot(hardwareMap);
+    private SettingsMenu settings;
 
     private final KonamiCode konamiCode = new KonamiCode();
-    private SettingsMenu settings;
     private int loop = 0;
 
     // Code to run ONCE when the driver hits INIT
@@ -29,11 +29,12 @@ public class MainTeleOpMode extends OpMode
     // Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAY
     @Override
     public void init_loop() {
-        if (konamiCode.loop(gamepad1)) {
+        boolean dancing = konamiCode.loop(gamepad1);
+        if (dancing) {
             telemetry.addData("Dancing", ")");
             konamiCode.dance(robot);
         } else {
-            settings.loop(); //broken!
+            settings.loop();
         }
     }
 
@@ -75,7 +76,7 @@ public class MainTeleOpMode extends OpMode
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
 
-        robot.arm.armBase.setPower(gamepad1.right_trigger - gamepad1.left_trigger);
+        //robot.arm.armBase.setPower(gamepad1.right_trigger - gamepad1.left_trigger);
 
 
         if (loop > 250 && (gamepad1.a || gamepad1.b || gamepad1.x || gamepad1.y)) {

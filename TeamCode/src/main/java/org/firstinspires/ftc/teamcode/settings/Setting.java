@@ -12,8 +12,11 @@ public class Setting {
     public int max;
     public List<String> translation;
 
-
     public Setting(String id, String name, int max, @Nullable List<String> translation) {
+        this(id, name, max, translation, 0);
+    }
+
+    public Setting(String id, String name, int max, @Nullable List<String> translation, int value) {
         if (translation == null) {
             translation = new ArrayList<String>();
             for (int i = 0; i < max; i++) {
@@ -24,7 +27,7 @@ public class Setting {
 
         this.id = id;
         this.name = name;
-        this.value = 0;
+        this.value = value;
         this.max = max;
         this.translation = translation;
     }

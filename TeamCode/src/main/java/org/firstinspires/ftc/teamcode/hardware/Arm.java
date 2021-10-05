@@ -13,8 +13,8 @@ public class Arm {
     public Servo armGrabber;
 
     public void init() {
-        armBase = Robot.getHardwareMap().get(DcMotor.class, "arm_base");
-        armGrabber = Robot.getHardwareMap().get(Servo.class, "arm_grabber");
+        //armBase = Robot.getHardwareMap().get(DcMotor.class, "arm_base");
+        //armGrabber = Robot.getHardwareMap().get(Servo.class, "arm_grabber");
     }
 
     public void toggleGrab() {

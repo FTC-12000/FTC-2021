@@ -27,4 +27,16 @@ public class SettingUtil {
 
         return new SettingsMenu(settings, telemetry, gamepad);
     }
+
+    public static SettingsMenu createBasicAutoOpSettings(Telemetry telemetry, Gamepad gamepad) {
+        ArrayList<Setting> settings = new ArrayList<>();
+        Setting setting;
+
+        setting = new Setting("drive_time", "Drive Time", 16, null, 8);
+        settings.add(setting);
+        setting = new Setting("wait_time", "Wait Time", 16, null);
+        settings.add(setting);
+
+        return new SettingsMenu(settings, telemetry, gamepad);
+    }
 }

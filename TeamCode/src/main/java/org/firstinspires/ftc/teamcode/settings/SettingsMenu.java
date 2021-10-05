@@ -29,9 +29,6 @@ public class SettingsMenu {
         for (Setting setting : settings) {
             this.settings.put(setting.id, setting);
         }
-
-        System.out.println(this.settings.getByIndex(0).translation);
-        System.out.println(this.settings.getByIndex(1).translation);
     }
 
     public void loop() {

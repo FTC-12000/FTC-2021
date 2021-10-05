@@ -90,7 +90,7 @@ public class KonamiCode {
 
     public boolean buttonPressed(Gamepad gamepad) {
         // this is the worst line of code ive ever written
-        return (gamepad.dpad_up && gamepad.dpad_down && gamepad.dpad_left && gamepad.dpad_right && gamepad.a && gamepad.b && gamepad.x && gamepad.y && gamepad.left_bumper && (gamepad.left_trigger != 0) && gamepad.right_bumper && (gamepad.right_trigger != 0) && gamepad.left_stick_button && gamepad.right_stick_button && gamepad.back && gamepad.start && gamepad.atRest());
+        return (gamepad.dpad_up || gamepad.dpad_down || gamepad.dpad_left || gamepad.dpad_right || gamepad.a || gamepad.b || gamepad.x || gamepad.y || gamepad.left_bumper || (gamepad.left_trigger != 0) || gamepad.right_bumper || (gamepad.right_trigger != 0) || gamepad.left_stick_button || gamepad.right_stick_button || gamepad.back || gamepad.start || gamepad.atRest());
     }
 
     public void dance(Robot robot) {
@@ -107,7 +107,7 @@ public class KonamiCode {
             loop = 0;
         }
 
-        robot.leftDrive.setPower(direction);
-        robot.rightDrive.setPower(-direction);
+        //robot.leftDrive.setPower(direction);
+        //robot.rightDrive.setPower(-direction);
     }
 }

@@ -23,6 +23,8 @@ public class Robot {
 
         leftDrive.setDirection(DcMotor.Direction.FORWARD);
         rightDrive.setDirection(DcMotor.Direction.REVERSE);
+
+        arm.init();
     }
 
     public static Robot getInstance() {
