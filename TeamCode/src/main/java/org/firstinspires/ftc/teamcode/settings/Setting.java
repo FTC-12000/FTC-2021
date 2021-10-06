@@ -17,6 +17,7 @@ public class Setting {
     }
 
     public Setting(String id, String name, int max, @Nullable List<String> translation, int value) {
+        max++;
         if (translation == null) {
             translation = new ArrayList<String>();
             for (int i = 0; i < max; i++) {

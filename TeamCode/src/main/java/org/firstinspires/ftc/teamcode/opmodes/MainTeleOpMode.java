@@ -9,7 +9,7 @@ import org.firstinspires.ftc.teamcode.hardware.Robot;
 import org.firstinspires.ftc.teamcode.settings.SettingUtil;
 import org.firstinspires.ftc.teamcode.settings.SettingsMenu;
 
-@TeleOp(name = "Main: TeleOp", group = "12000")
+@TeleOp(name = "Tele: Main", group = "12000")
 public class MainTeleOpMode extends OpMode
 {
     private final ElapsedTime runtime = new ElapsedTime();

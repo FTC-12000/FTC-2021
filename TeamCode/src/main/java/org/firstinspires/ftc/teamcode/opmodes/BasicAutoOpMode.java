@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.hardware.Robot;
 import org.firstinspires.ftc.teamcode.settings.SettingUtil;
 import org.firstinspires.ftc.teamcode.settings.SettingsMenu;
 
-@Autonomous(name = "Main: Basic", group = "12000")
+@Autonomous(name = "Auto: Basic", group = "12000")
 public class BasicAutoOpMode extends OpMode {
     private float driveTime;
     private float waitTime;

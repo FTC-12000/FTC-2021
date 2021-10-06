@@ -37,7 +37,7 @@ public class SettingsMenu {
     }
 
     private void handleInput() {
-        if (inputDelayLoop > 150) {
+        if (inputDelayLoop > 100) {
             if (gamepad.dpad_right) {
                 Setting setting = settings.get(selected);
                 int value = setting.value + 1;
