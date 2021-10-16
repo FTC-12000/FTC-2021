@@ -116,16 +116,16 @@ public class MainTeleOpMode extends OpMode
 
             switch (armMode) {
                 case 1: // compact
-                    if (loop > 250 && (gamepad1.a || gamepad1.b || gamepad1.x || gamepad1.y)) {
+                    if (loop > 250 && (gamepad1.a)) {
                         robot.arm.toggleGrab();
                         loop = 0;
                     }
                     break;
                 case 2: // expanded
-                    if (loop > 250 && (gamepad1.a || gamepad1.b)) {
+                    if (loop > 250 && (gamepad1.a)) {
                         robot.arm.setGrab(true);
                         loop = 0;
-                    } else if (loop > 250 && (gamepad1.x || gamepad1.y)) {
+                    } else if (loop > 250 && (gamepad1.b)) {
                         robot.arm.setGrab(false);
                         loop = 0;
                     }
