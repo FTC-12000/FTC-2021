@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.hardware;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Robot {
@@ -9,6 +10,8 @@ public class Robot {
 
     public DcMotor leftDrive;
     public DcMotor rightDrive;
+
+    public DcMotor eyeball;
 
     public Arm arm = new Arm();
 
@@ -21,8 +24,12 @@ public class Robot {
         leftDrive = hardwareMap.get(DcMotor.class, "left_drive");
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
 
+        eyeball = hardwareMap.get(DcMotor.class, "eyeball");
+
         leftDrive.setDirection(DcMotor.Direction.FORWARD);
         rightDrive.setDirection(DcMotor.Direction.REVERSE);
+
+        eyeball.setDirection(DcMotorSimple.Direction.FORWARD);
 
         arm.init();
     }

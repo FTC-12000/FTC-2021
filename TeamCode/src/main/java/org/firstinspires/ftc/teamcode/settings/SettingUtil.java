@@ -19,10 +19,9 @@ public class SettingUtil {
         settings.add(setting);
 
         translation = new ArrayList<>();
-        translation.add("Test 1");
-        translation.add("Test 2");
-        translation.add("Test 3");
-        setting = new Setting("test", "Test", 3, translation);
+        translation.add("Compact");
+        translation.add("Expanded");
+        setting = new Setting("arm_mode", "Arm Mode", 2, translation);
         settings.add(setting);
 
         return new SettingsMenu(settings, telemetry, gamepad);
@@ -32,9 +31,9 @@ public class SettingUtil {
         ArrayList<Setting> settings = new ArrayList<>();
         Setting setting;
 
-        setting = new Setting("drive_time", "Drive Time", 16, null, 8);
+        setting = new Setting("drive_time", "Drive Time", 17, null, 8);
         settings.add(setting);
-        setting = new Setting("wait_time", "Wait Time", 16, null);
+        setting = new Setting("wait_time", "Wait Time", 17, null);
         settings.add(setting);
 
         return new SettingsMenu(settings, telemetry, gamepad);

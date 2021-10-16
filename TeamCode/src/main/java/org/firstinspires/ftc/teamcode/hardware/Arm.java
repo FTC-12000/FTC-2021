@@ -9,21 +9,28 @@ public class Arm {
     private static final double OPEN_POS = 0;
     private static final double CLOSED_POS = 0.5;
 
-    public DcMotor armBase;
+    public DcMotor armActuator;
     public Servo armGrabber;
+    public DcMotor armExtender;
 
     public void init() {
-        //armBase = Robot.getHardwareMap().get(DcMotor.class, "arm_base");
-        //armGrabber = Robot.getHardwareMap().get(Servo.class, "arm_grabber");
+        armActuator = Robot.getHardwareMap().get(DcMotor.class, "arm_base");
+        armGrabber = Robot.getHardwareMap().get(Servo.class, "arm_grabber");
+        armExtender = Robot.getHardwareMap().get(DcMotor.class, "arm_extender");
     }
 
     public void toggleGrab() {
-        if (grabberClosed) {
-            armGrabber.setPosition(OPEN_POS);
-            grabberClosed = false;
-        } else {
-            armGrabber.setPosition(CLOSED_POS);
-            grabberClosed = true;
+    }
+
+    public void setGrab(boolean closed) {
+        if (closed != grabberClosed) {
+            if (grabberClosed) {
+                armGrabber.setPosition(OPEN_POS);
+                grabberClosed = false;
+            } else {
+                armGrabber.setPosition(CLOSED_POS);
+                grabberClosed = true;
+            }
         }
     }
 

@@ -32,15 +32,18 @@ public class BasicAutoOpMode extends OpMode {
     public void start() {
         driveTime = settings.getSetting("drive_time");
         waitTime = settings.getSetting("wait_time");
+        
         runtime.reset();
     }
-
+//All this does is drive to the right, too bad!
     @Override
     public void loop() {
+        robot.eyeball.setPower(1);
         if (runtime.time() > waitTime) {
             if (runtime.time() < driveTime + waitTime) {
                 robot.leftDrive.setPower(1);
-                robot.rightDrive.setPower(1);
+                robot.rightDrive.setPower(0.7);
+
             } else {
                 robot.leftDrive.setPower(0);
                 robot.rightDrive.setPower(0);
