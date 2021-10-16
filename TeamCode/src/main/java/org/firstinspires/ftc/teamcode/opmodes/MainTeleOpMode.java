@@ -93,6 +93,7 @@ public class MainTeleOpMode extends OpMode
                     leftPower = left;
                     rightPower = right;
                     forwardPower = forward;
+                    backwardsPower = backwards;
                     break;
                 case 1: // dual stick
                     leftX = -leftX;

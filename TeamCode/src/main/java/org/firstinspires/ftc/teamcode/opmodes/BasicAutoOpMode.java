@@ -12,6 +12,7 @@ import org.firstinspires.ftc.teamcode.settings.SettingsMenu;
 public class BasicAutoOpMode extends OpMode {
     private float driveTime;
     private float waitTime;
+    private float warehouseSide;
 
     private final ElapsedTime runtime = new ElapsedTime();
     private final Robot robot = new Robot(hardwareMap);
@@ -32,6 +33,7 @@ public class BasicAutoOpMode extends OpMode {
     public void start() {
         driveTime = settings.getSetting("drive_time");
         waitTime = settings.getSetting("wait_time");
+        warehouseSide = settings.getSetting("warehouse_side");
         
         runtime.reset();
     }
@@ -41,8 +43,10 @@ public class BasicAutoOpMode extends OpMode {
         robot.eyeball.setPower(1);
         if (runtime.time() > waitTime) {
             if (runtime.time() < driveTime + waitTime) {
+            if
                 robot.leftDrive.setPower(1);
                 robot.rightDrive.setPower(0.7);
+
 
             } else {
                 robot.leftDrive.setPower(0);
