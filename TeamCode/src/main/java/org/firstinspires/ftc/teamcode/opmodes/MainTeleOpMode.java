@@ -81,7 +81,8 @@ public class MainTeleOpMode extends OpMode
 
             boolean left = gamepad1.dpad_left;
             boolean right = gamepad1.dpad_right;
-            boolean forward = -gamepad1.dpad_up;
+            boolean forward = gamepad1.dpad_up;
+            boolean backwards = gamepad1.dpad_down;
             //float rightX = -gamepad1.right_stick_x; // This isn't used, too bad!
 
             float leftPower = 0;
@@ -89,8 +90,9 @@ public class MainTeleOpMode extends OpMode
 
             switch (driveMode) {
                 case 0: // single stick
-                    leftPower = leftY;
-                    rightPower = rightY;
+                    leftPower = left;
+                    rightPower = right;
+                    forwardPower = forward;
                     break;
                 case 1: // dual stick
                     leftX = -leftX;
@@ -99,6 +101,7 @@ public class MainTeleOpMode extends OpMode
 
                     leftPower = (V + W) / 2;
                     rightPower = (V - W) / 2;
+                    forwardPower =
                     break;
             }
 

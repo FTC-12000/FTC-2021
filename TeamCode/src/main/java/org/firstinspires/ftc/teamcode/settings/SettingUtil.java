@@ -24,6 +24,12 @@ public class SettingUtil {
         setting = new Setting("arm_mode", "Arm Mode", 2, translation);
         settings.add(setting);
 
+        translation = new ArrayList<>();
+        translation.add("Right Side");
+        translation.add("Left Side");
+        setting = new Setting("warehouse_side", "Warehouse Side",2, translation);
+        settings.add(setting);
+
         return new SettingsMenu(settings, telemetry, gamepad);
     }
 
