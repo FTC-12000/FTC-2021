@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.fun.KonamiCode;
 import org.firstinspires.ftc.teamcode.hardware.Robot;
+import org.firstinspires.ftc.teamcode.hardware.Arm;
 import org.firstinspires.ftc.teamcode.settings.SettingUtil;
 import org.firstinspires.ftc.teamcode.settings.SettingsMenu;
 
@@ -70,7 +71,7 @@ public class MainTeleOpMode extends OpMode
             if (loop > 100 && gamepad1.start) {
                 paused = true;
 
-                //robot.arm.armBase.setPower(0);
+                robot.arm.armActuator.setPower(0);
                 robot.leftDrive.setPower(0);
                 robot.rightDrive.setPower(0);
 
@@ -78,9 +79,9 @@ public class MainTeleOpMode extends OpMode
                 return;
             }
 
-            float leftY = -gamepad1.left_stick_y;
-            float rightY = -gamepad1.right_stick_y;
-            float leftX = -gamepad1.left_stick_x;
+            boolean left = gamepad1.dpad_left;
+            boolean right = gamepad1.dpad_right;
+            boolean forward = -gamepad1.dpad_up;
             //float rightX = -gamepad1.right_stick_x; // This isn't used, too bad!
 
             float leftPower = 0;
