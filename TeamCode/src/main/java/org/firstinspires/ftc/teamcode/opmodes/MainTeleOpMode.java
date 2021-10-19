@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.fun.KonamiCode;
 import org.firstinspires.ftc.teamcode.hardware.Robot;
-import org.firstinspires.ftc.teamcode.hardware.Arm;
 import org.firstinspires.ftc.teamcode.settings.SettingUtil;
 import org.firstinspires.ftc.teamcode.settings.SettingsMenu;
 
@@ -88,15 +87,37 @@ public class MainTeleOpMode extends OpMode
             float rightPower = 0;
 
             switch (driveMode) {
-                case 0: // single stick
+                case 0: // dual stick
                     leftPower = leftY;
                     rightPower = rightY;
                     break;
-                case 1: // dual stick
+                case 1: // single stick
                     leftX = -leftX;
                     float V = (100 - Math.abs(leftX)) * (leftY / 100) + leftY;
                     float W = (100 - Math.abs(leftY)) * (leftX/100) + leftX;
 
+                    leftPower = (V + W) / 2;
+                    rightPower = (V - W) / 2;
+                    break;
+                case 2: // dpad - this is stupid, but zachs forcing my hand
+                    leftX = 0;
+                    leftY = 0;
+                    if (gamepad1.dpad_up) {
+                        leftY += 1;
+                    }
+                    if (gamepad1.dpad_down) {
+                        leftY -= 1;
+                    }
+                    if (gamepad1.dpad_left) {
+                        leftX += 1;
+                    }
+                    if (gamepad1.dpad_right) {
+                        leftX -= 1;
+                    }
+                    V = (100 - Math.abs(leftX)) * (leftY / 100) + leftY;
+                    W = (100 - Math.abs(leftY)) * (leftX/100) + leftX;
+//i like men;poop:insert pee
+//and i m great hail me
                     leftPower = (V + W) / 2;
                     rightPower = (V - W) / 2;
                     break;

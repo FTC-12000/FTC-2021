@@ -15,7 +15,8 @@ public class SettingUtil {
         translation = new ArrayList<>();
         translation.add("Dual Stick");
         translation.add("Single Stick");
-        setting = new Setting("drive_mode", "Drive Mode", 2, translation);
+        translation.add("DPad");
+        setting = new Setting("drive_mode", "Drive Mode", 3, translation);
         settings.add(setting);
 
         translation = new ArrayList<>();
@@ -36,7 +37,7 @@ public class SettingUtil {
         settings.add(setting);
         setting = new Setting("wait_time", "Wait Time", 17, null);
         settings.add(setting);
-        
+
         return new SettingsMenu(settings, telemetry, gamepad);
     }
 }
