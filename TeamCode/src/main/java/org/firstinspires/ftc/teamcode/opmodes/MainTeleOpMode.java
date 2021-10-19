@@ -79,10 +79,9 @@ public class MainTeleOpMode extends OpMode
                 return;
             }
 
-            boolean left = gamepad1.dpad_left;
-            boolean right = gamepad1.dpad_right;
-            boolean forward = gamepad1.dpad_up;
-            boolean backwards = gamepad1.dpad_down;
+            float leftY = -gamepad1.left_stick_y;
+            float rightY = -gamepad1.right_stick_y;
+            float leftX = -gamepad1.left_stick_x;
             //float rightX = -gamepad1.right_stick_x; // This isn't used, too bad!
 
             float leftPower = 0;
@@ -90,10 +89,8 @@ public class MainTeleOpMode extends OpMode
 
             switch (driveMode) {
                 case 0: // single stick
-                    leftPower = left;
-                    rightPower = right;
-                    forwardPower = forward;
-                    backwardsPower = backwards;
+                    leftPower = leftY;
+                    rightPower = rightY;
                     break;
                 case 1: // dual stick
                     leftX = -leftX;
@@ -102,7 +99,6 @@ public class MainTeleOpMode extends OpMode
 
                     leftPower = (V + W) / 2;
                     rightPower = (V - W) / 2;
-                    forwardPower =
                     break;
             }
 
@@ -113,11 +109,6 @@ public class MainTeleOpMode extends OpMode
             telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
 
             //robot.arm.armBase.setPower(gamepad1.right_trigger - gamepad1.left_trigger);
-
-
-
-
-
 
             switch (armMode) {
                 case 1: // compact
