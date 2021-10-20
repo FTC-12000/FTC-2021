@@ -38,6 +38,12 @@ public class SettingUtil {
         setting = new Setting("wait_time", "Wait Time", 17, null);
         settings.add(setting);
 
+        translation = new ArrayList<>();
+        translation.add("Left");
+        translation.add("Right");
+        setting = new Setting("warehouse_side","Warehouse Side",2, translation);
+        settings.add(setting);
+
         return new SettingsMenu(settings, telemetry, gamepad);
     }
 }
