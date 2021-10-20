@@ -55,7 +55,6 @@ public class MainTeleOpMode extends OpMode
     @Override
     public void loop() {
         if (paused) {
-            System.out.println(loop);
             if (loop > 100 && gamepad1.start) {
                 paused = false;
 
@@ -70,7 +69,8 @@ public class MainTeleOpMode extends OpMode
             if (loop > 100 && gamepad1.start) {
                 paused = true;
 
-                robot.arm.armActuator.setPower(0);
+                robot.arm.armBase.setPower(0);
+                robot.arm.armExtender.setPower(0);
                 robot.leftDrive.setPower(0);
                 robot.rightDrive.setPower(0);
 
@@ -109,15 +109,13 @@ public class MainTeleOpMode extends OpMode
                         leftY -= 1;
                     }
                     if (gamepad1.dpad_left) {
-                        leftX += 1;
+                        leftX -= 1;
                     }
                     if (gamepad1.dpad_right) {
-                        leftX -= 1;
+                        leftX += 1;
                     }
                     V = (100 - Math.abs(leftX)) * (leftY / 100) + leftY;
                     W = (100 - Math.abs(leftY)) * (leftX/100) + leftX;
-//i like men;poop:insert pee
-//and i m great hail me
                     leftPower = (V + W) / 2;
                     rightPower = (V - W) / 2;
                     break;
@@ -129,7 +127,8 @@ public class MainTeleOpMode extends OpMode
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
 
-            //robot.arm.armBase.setPower(gamepad1.right_trigger - gamepad1.left_trigger);
+            robot.arm.armBase.setPower(gamepad1.right_trigger - gamepad1.left_trigger);
+            robot.arm.armExtender.setPower(((gamepad1.right_bumper) ? 1 : 0) - ((gamepad1.left_bumper) ? 1 : 0));
 
             switch (armMode) {
                 case 1: // compact

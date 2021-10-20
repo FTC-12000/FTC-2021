@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.hardware;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class Arm {
@@ -9,14 +10,14 @@ public class Arm {
     private static final double OPEN_POS = 0;
     private static final double CLOSED_POS = 0.5;
 
-    public DcMotor armActuator;
+    public DcMotor armBase;
     public Servo armGrabber;
     public DcMotor armExtender;
 
-    public void init() {
-        armActuator = Robot.getHardwareMap().get(DcMotor.class, "arm_base");
-        armGrabber = Robot.getHardwareMap().get(Servo.class, "arm_grabber");
-        armExtender = Robot.getHardwareMap().get(DcMotor.class, "arm_extender");
+    public void init(HardwareMap hardwareMap) {
+        armBase = hardwareMap.get(DcMotor.class, "arm_base");
+        //armGrabber = hardwareMap.get(Servo.class, "arm_grabber");
+        armExtender = hardwareMap.get(DcMotor.class, "arm_extender");
     }
 
     public void toggleGrab() {

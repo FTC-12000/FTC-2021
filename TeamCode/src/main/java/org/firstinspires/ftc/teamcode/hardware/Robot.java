@@ -31,7 +31,7 @@ public class Robot {
 
         eyeball.setDirection(DcMotorSimple.Direction.FORWARD);
 
-        arm.init();
+        arm.init(hardwareMap);
     }
 
     public static Robot getInstance() {
@@ -39,6 +39,11 @@ public class Robot {
     }
 
     public static HardwareMap getHardwareMap() {
-        return hardwareMap;
+        if (hardwareMap != null) {
+            return hardwareMap;
+        } else {
+            System.out.println("NULL, RIP");
+            return null;
+        }
     }
 }
