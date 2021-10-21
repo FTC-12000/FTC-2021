@@ -13,14 +13,14 @@ public class SettingUtil {
         Setting setting;
 
         translation = new ArrayList<>();
-        translation.add("Dual Stick");
+        translation.add("Dual Stick (Recommended)");
         translation.add("Single Stick");
         translation.add("DPad");
         setting = new Setting("drive_mode", "Drive Mode", 3, translation);
         settings.add(setting);
 
         translation = new ArrayList<>();
-        translation.add("Compact");
+        translation.add("Compact (Recommended)");
         translation.add("Expanded");
         setting = new Setting("arm_mode", "Arm Mode", 2, translation);
         settings.add(setting);
@@ -43,6 +43,14 @@ public class SettingUtil {
         translation.add("Right");
         setting = new Setting("warehouse_side","Warehouse Side",2, translation);
         settings.add(setting);
+
+        return new SettingsMenu(settings, telemetry, gamepad);
+    }
+
+    public static SettingsMenu createMainAutoOpSettings(Telemetry telemetry, Gamepad gamepad) {
+        ArrayList<Setting> settings = new ArrayList<>();
+        ArrayList<String> translation;
+        Setting setting;
 
         return new SettingsMenu(settings, telemetry, gamepad);
     }
