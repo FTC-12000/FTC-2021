@@ -58,14 +58,14 @@ public class SettingsMenu {
                 }
                 settings.put(selected, setting);
                 inputDelayLoop = 0;
-            } else if (gamepad.dpad_up) {
+            } else if (gamepad.dpad_down) {
                 int index = settings.keys.indexOf(selected) + 1;
                 if (index >= settings.size()) {
                     index = 0;
                 }
                 selected = settings.keys.get(index);
                 inputDelayLoop = 0;
-            } else if (gamepad.dpad_down) {
+            } else if (gamepad.dpad_up) {
                 int index = settings.keys.indexOf(selected) - 1;
                 if (index < 0) {
                     index = settings.keys.size() - 1;

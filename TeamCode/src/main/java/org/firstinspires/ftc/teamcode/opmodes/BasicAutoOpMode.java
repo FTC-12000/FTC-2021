@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.settings.SettingsMenu;
 public class BasicAutoOpMode extends OpMode {
     private float driveTime;
     private float waitTime;
-    private int warehouseSide;
+    private int turnDirection;
 
     private final ElapsedTime runtime = new ElapsedTime();
     private final Robot robot = new Robot(hardwareMap);
@@ -33,23 +33,27 @@ public class BasicAutoOpMode extends OpMode {
     public void start() {
         driveTime = settings.getSetting("drive_time");
         waitTime = settings.getSetting("wait_time");
-        warehouseSide = settings.getSetting("warehouse_side");
+        turnDirection = settings.getSetting("turn_direction");
         runtime.reset();
     }
-//All this does is drive to the right, too bad!
+
     @Override
     public void loop() {
         robot.eyeball.setPower(1);
         if (runtime.time() > waitTime) {
             if (runtime.time() < driveTime + waitTime) {
-                switch (warehouseSide) {
-                    case 0: // left side
+                switch (turnDirection) {
+                    case 0: // no turn
                         robot.leftDrive.setPower(1);
-                        robot.rightDrive.setPower(0.7);
-                        break;
-                    case 1: // right side
-                        robot.leftDrive.setPower(0.7);
                         robot.rightDrive.setPower(1);
+                        break;
+                    case 1: // left turn
+                        robot.leftDrive.setPower(0.2);
+                        robot.rightDrive.setPower(1);
+                        break;
+                    case 3: // right turn
+                        robot.leftDrive.setPower(1);
+                        robot.rightDrive.setPower(0.2);
                         break;
                 }
 

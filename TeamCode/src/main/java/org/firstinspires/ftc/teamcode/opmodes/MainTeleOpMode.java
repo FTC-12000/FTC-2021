@@ -1,3 +1,4 @@
+// i forgor
 package org.firstinspires.ftc.teamcode.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -42,7 +43,7 @@ public class MainTeleOpMode extends OpMode
             settings.loop();
         }
     }
-
+// me coding hard
     // Code to run ONCE when the driver hits PLAY
     @Override
     public void start() {
