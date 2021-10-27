@@ -11,7 +11,7 @@ public class Robot {
     public DcMotor leftDrive;
     public DcMotor rightDrive;
 
-    public DcMotor eyeball;
+    public DcMotor spinner;
 
     public Arm arm = new Arm();
 
@@ -24,12 +24,12 @@ public class Robot {
         leftDrive = hardwareMap.get(DcMotor.class, "left_drive");
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
 
-        eyeball = hardwareMap.get(DcMotor.class, "eyeball");
+        spinner = hardwareMap.get(DcMotor.class, "spinner");
 
         leftDrive.setDirection(DcMotor.Direction.FORWARD);
         rightDrive.setDirection(DcMotor.Direction.REVERSE);
 
-        eyeball.setDirection(DcMotorSimple.Direction.FORWARD);
+        spinner.setDirection(DcMotorSimple.Direction.FORWARD);
 
         arm.init(hardwareMap);
     }

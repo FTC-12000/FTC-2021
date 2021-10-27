@@ -13,6 +13,7 @@ public class BasicAutoOpMode extends OpMode {
     private float driveTime;
     private float waitTime;
     private int turnDirection;
+    private int spinner;
 
     private final ElapsedTime runtime = new ElapsedTime();
     private final Robot robot = new Robot(hardwareMap);
@@ -34,12 +35,13 @@ public class BasicAutoOpMode extends OpMode {
         driveTime = settings.getSetting("drive_time");
         waitTime = settings.getSetting("wait_time");
         turnDirection = settings.getSetting("turn_direction");
+        spinner = settings.getSetting("spinner");
         runtime.reset();
     }
 
     @Override
     public void loop() {
-        robot.eyeball.setPower(1);
+        robot.spinner.setPower(spinner);
         if (runtime.time() > waitTime) {
             if (runtime.time() < driveTime + waitTime) {
                 switch (turnDirection) {

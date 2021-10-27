@@ -39,6 +39,12 @@ public class SettingUtil {
         settings.add(setting);
 
         translation = new ArrayList<>();
+        translation.add("Off");
+        translation.add("On");
+        setting = new Setting("spinner","Spinner",2, translation);
+        settings.add(setting);
+
+        translation = new ArrayList<>();
         translation.add("None");
         translation.add("Left");
         translation.add("Right");

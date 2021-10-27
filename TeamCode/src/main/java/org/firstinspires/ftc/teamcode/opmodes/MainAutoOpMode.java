@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 @Autonomous(name = "Auto: Main", group = "12000")
 @Disabled
-public class MainAutoOpMode extends OpMode {
+public class MainAutoOpMode extends AbstractAutoOpMode {
     @Override
     public void init() {
 

@@ -150,9 +150,9 @@ public class MainTeleOpMode extends OpMode
             }
 
             if (gamepad1.y) {
-                robot.eyeball.setPower(1);
+                robot.spinner.setPower(1);
             } else {
-                robot.eyeball.setPower(0);
+                robot.spinner.setPower(0);
             }
         }
 
