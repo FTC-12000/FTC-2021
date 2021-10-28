@@ -4,6 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
+/*
+* This will eventually be our AutoOp, but for now we are using BasicAutoOpMode.java
+*/
 @Autonomous(name = "Auto: Main", group = "12000")
 @Disabled
 public class MainAutoOpMode extends AbstractAutoOpMode {

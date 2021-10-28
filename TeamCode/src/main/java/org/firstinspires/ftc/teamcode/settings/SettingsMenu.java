@@ -7,6 +7,12 @@ import org.firstinspires.ftc.teamcode.IndexedHashMap;
 
 import java.util.ArrayList;
 
+/*
+* This class is a menu that displays in the text output on the drivers phone.
+* I made this because:
+*  A. I heard the hell of having tons of OpModes, specifically autonomous
+*  B. I over-engineer everything, and this is no exception
+*/
 public class SettingsMenu {
     private IndexedHashMap<String, Setting> settings = new IndexedHashMap<>();
 
@@ -41,7 +47,7 @@ public class SettingsMenu {
             if (gamepad.dpad_right) {
                 Setting setting = settings.get(selected);
                 int value = setting.value + 1;
-                if (value < setting.max) { //i feel like this is wrong, cant debug rn
+                if (value < setting.max) {
                     setting.value = value;
                 } else {
                     setting.value = 0;

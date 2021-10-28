@@ -4,6 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.hardware.Robot;
 
+/*
+* The is a base class for our AutoOp OpModes, to hold universal control methods
+*/
 public abstract class AbstractAutoOpMode extends OpMode {
     private enum Direction {
         FORWARDS,
@@ -18,9 +21,6 @@ public abstract class AbstractAutoOpMode extends OpMode {
     private static final double CM_PER_SECOND = 10;
 
     private final Robot robot = new Robot(hardwareMap);
-
-    @Override public void init() {}
-    @Override public void loop() {}
 
     private void turn(double degrees) {
         if (degrees > 180) {
@@ -86,4 +86,9 @@ public abstract class AbstractAutoOpMode extends OpMode {
         drive(Direction.STOP);
         drive(Direction.STOP);
     }
+
+
+
+    @Override public void init() {}
+    @Override public void loop() {}
 }

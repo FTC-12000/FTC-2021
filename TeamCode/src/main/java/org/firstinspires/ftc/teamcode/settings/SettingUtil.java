@@ -6,6 +6,10 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import java.util.ArrayList;
 
+/*
+* This class just holds static bulky methods for creating settings objects for the OpModes.
+* The actual settings menu code is in SettingsMenu.java
+*/
 public class SettingUtil {
     public static SettingsMenu createTeleOpSettings(Telemetry telemetry, Gamepad gamepad) {
         ArrayList<Setting> settings = new ArrayList<>();

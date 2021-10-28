@@ -4,6 +4,9 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+/*
+* This class holds all of the hardware (and setup code) for the robot. The arm is a separate class, Arm.java
+*/
 public class Robot {
     private static Robot instance;
     private static HardwareMap hardwareMap;

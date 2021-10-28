@@ -5,6 +5,10 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/*
+* This is a HashMap that keeps track on indexes, which we use in SettingsMenu.java
+* We need this because we use indexes for cursor movement, but k/v pairs for display.
+*/
 public class IndexedHashMap<K, V> extends HashMap<K, V> {
     public ArrayList<K> keys = new ArrayList<>();
 
@@ -30,11 +34,11 @@ public class IndexedHashMap<K, V> extends HashMap<K, V> {
         return super.remove(key);
     }
 
-    public V getByIndex(int index) {
+    public V get(int index) {
         return this.get(keys.get(index));
     }
 
-    public V removeByIndex(int index) {
+    public V remove(int index) {
         return this.remove(keys.get(index));
     }
 }

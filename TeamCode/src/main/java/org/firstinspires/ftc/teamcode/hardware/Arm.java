@@ -4,6 +4,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
+/*
+* This is a separate hardware class for the arm, because it has its own methods, and a bunch of extra parts/
+* Main hardware is under Robot.java. Do not use this outside of Robot.java!
+*/
 public class Arm {
     private boolean grabberClosed;
 

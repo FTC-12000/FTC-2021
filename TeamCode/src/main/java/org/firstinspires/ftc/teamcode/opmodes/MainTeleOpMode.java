@@ -10,6 +10,9 @@ import org.firstinspires.ftc.teamcode.hardware.Robot;
 import org.firstinspires.ftc.teamcode.settings.SettingUtil;
 import org.firstinspires.ftc.teamcode.settings.SettingsMenu;
 
+/*
+* Main TeleOp OpMode. This class is mostly complete, and will get better documentation later.
+*/
 @TeleOp(name = "Tele: Main", group = "12000")
 public class MainTeleOpMode extends OpMode
 {

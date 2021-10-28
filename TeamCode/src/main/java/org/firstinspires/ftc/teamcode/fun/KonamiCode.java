@@ -4,6 +4,9 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.hardware.Robot;
 
+/*
+* An easter egg, made out of terrible code. Seriously, don't scroll down unless you want psychic damage
+*/
 public class KonamiCode {
     boolean dancing, up, up2, down, down2, left, right, left2, right2, b, a = false;
     int direction = 1;
@@ -107,7 +110,7 @@ public class KonamiCode {
             loop = 0;
         }
 
-        //robot.leftDrive.setPower(direction);
-        //robot.rightDrive.setPower(-direction);
+        robot.leftDrive.setPower(direction);
+        robot.rightDrive.setPower(-direction);
     }
 }

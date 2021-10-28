@@ -5,6 +5,9 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+* This is the actual settings object, which stores info about a setting (specifically so i can put it in a Map)
+*/
 public class Setting {
     public String id;
     public String name;

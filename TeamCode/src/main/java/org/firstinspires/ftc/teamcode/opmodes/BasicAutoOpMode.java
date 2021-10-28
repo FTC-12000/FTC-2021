@@ -8,6 +8,10 @@ import org.firstinspires.ftc.teamcode.hardware.Robot;
 import org.firstinspires.ftc.teamcode.settings.SettingUtil;
 import org.firstinspires.ftc.teamcode.settings.SettingsMenu;
 
+/*
+* Basic AutoOp OpMode, for use in early competition before we finish the main one
+* It just spins the spinner to drop a duck, and drives into the storage area, but is highly configurable at runtime
+*/
 @Autonomous(name = "Auto: Basic", group = "12000")
 public class BasicAutoOpMode extends OpMode {
     private float driveTime;
