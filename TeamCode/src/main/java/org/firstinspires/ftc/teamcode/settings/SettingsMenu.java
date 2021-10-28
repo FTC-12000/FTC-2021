@@ -43,7 +43,9 @@ public class SettingsMenu {
     }
 
     private void handleInput() {
+        // delay loop to prevent multi-inputs
         if (inputDelayLoop > 100) {
+            // right - cycling through values
             if (gamepad.dpad_right) {
                 Setting setting = settings.get(selected);
                 int value = setting.value + 1;
@@ -54,6 +56,7 @@ public class SettingsMenu {
                 }
                 settings.put(selected, setting);
                 inputDelayLoop = 0;
+            // left - cycling through values in reverse
             } else if (gamepad.dpad_left) {
                 Setting setting = settings.get(selected);
                 int value = setting.value - 1;
@@ -64,6 +67,7 @@ public class SettingsMenu {
                 }
                 settings.put(selected, setting);
                 inputDelayLoop = 0;
+            // down - cycling through settings
             } else if (gamepad.dpad_down) {
                 int index = settings.keys.indexOf(selected) + 1;
                 if (index >= settings.size()) {
@@ -71,6 +75,7 @@ public class SettingsMenu {
                 }
                 selected = settings.keys.get(index);
                 inputDelayLoop = 0;
+            // up - cycling through settings in reverse
             } else if (gamepad.dpad_up) {
                 int index = settings.keys.indexOf(selected) - 1;
                 if (index < 0) {

@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.fun.KonamiCode;
 import org.firstinspires.ftc.teamcode.hardware.Robot;
-import org.firstinspires.ftc.teamcode.settings.SettingUtil;
+import org.firstinspires.ftc.teamcode.settings.SettingsUtil;
 import org.firstinspires.ftc.teamcode.settings.SettingsMenu;
 
 /*
@@ -31,7 +31,7 @@ public class MainTeleOpMode extends OpMode
     @Override
     public void init() {
         robot.init(hardwareMap);
-        settings = SettingUtil.createTeleOpSettings(telemetry, gamepad1);
+        settings = SettingsUtil.createTeleOpSettings(telemetry, gamepad1);
     }
 
     // Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAY
@@ -125,6 +125,11 @@ public class MainTeleOpMode extends OpMode
                     break;
             }
 
+            if (settings.getSetting("directional_stability") == 1) {
+                double SPEED_RATIO = 1;
+                //leftPower *= SPEED_RATIO;
+                //rightPower *= (1 - SPEED_RATIO);
+            }
             robot.leftDrive.setPower(leftPower);
             robot.rightDrive.setPower(rightPower);
 

@@ -10,12 +10,13 @@ import java.util.ArrayList;
 * This class just holds static bulky methods for creating settings objects for the OpModes.
 * The actual settings menu code is in SettingsMenu.java
 */
-public class SettingUtil {
+public class SettingsUtil {
     public static SettingsMenu createTeleOpSettings(Telemetry telemetry, Gamepad gamepad) {
         ArrayList<Setting> settings = new ArrayList<>();
         ArrayList<String> translation;
         Setting setting;
 
+        // Drive Mode
         translation = new ArrayList<>();
         translation.add("Dual Stick (Recommended)");
         translation.add("Single Stick");
@@ -23,6 +24,14 @@ public class SettingUtil {
         setting = new Setting("drive_mode", "Drive Mode", 3, translation);
         settings.add(setting);
 
+        // Directional Stability
+        translation = new ArrayList<>();
+        translation.add("On");
+        translation.add("Off");
+        setting = new Setting("directional_stability","Directional Stability",2, translation);
+        settings.add(setting);
+
+        // Arm Mode
         translation = new ArrayList<>();
         translation.add("Compact (Recommended)");
         translation.add("Expanded");
@@ -37,17 +46,20 @@ public class SettingUtil {
         ArrayList<String> translation;
         Setting setting;
 
+        // Drive Time and Wait Time
         setting = new Setting("drive_time", "Drive Time", 17, null, 8);
         settings.add(setting);
         setting = new Setting("wait_time", "Wait Time", 17, null);
         settings.add(setting);
 
+        // Spinner
         translation = new ArrayList<>();
         translation.add("Off");
         translation.add("On");
         setting = new Setting("spinner","Spinner",2, translation);
         settings.add(setting);
 
+        // Turn Direction
         translation = new ArrayList<>();
         translation.add("None");
         translation.add("Left");

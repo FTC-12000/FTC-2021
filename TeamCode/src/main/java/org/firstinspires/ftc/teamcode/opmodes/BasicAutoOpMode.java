@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.hardware.Robot;
-import org.firstinspires.ftc.teamcode.settings.SettingUtil;
+import org.firstinspires.ftc.teamcode.settings.SettingsUtil;
 import org.firstinspires.ftc.teamcode.settings.SettingsMenu;
 
 /*
@@ -26,7 +26,7 @@ public class BasicAutoOpMode extends OpMode {
     @Override
     public void init() {
         robot.init(hardwareMap);
-        settings = SettingUtil.createBasicAutoOpSettings(telemetry, gamepad1);
+        settings = SettingsUtil.createBasicAutoOpSettings(telemetry, gamepad1);
     }
 
     @Override
