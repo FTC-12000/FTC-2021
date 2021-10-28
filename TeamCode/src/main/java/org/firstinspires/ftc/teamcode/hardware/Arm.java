@@ -19,9 +19,9 @@ public class Arm {
     public DcMotor armExtender;
 
     public void init(HardwareMap hardwareMap) {
-        armBase = hardwareMap.get(DcMotor.class, "arm_base");
+        //armBase = hardwareMap.get(DcMotor.class, "arm_base");
         //armGrabber = hardwareMap.get(Servo.class, "arm_grabber");
-        armExtender = hardwareMap.get(DcMotor.class, "arm_extender");
+        //armExtender = hardwareMap.get(DcMotor.class, "arm_extender");
     }
 
     public void toggleGrab() {

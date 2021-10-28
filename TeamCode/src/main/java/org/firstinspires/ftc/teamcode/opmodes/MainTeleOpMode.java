@@ -147,6 +147,7 @@ public class MainTeleOpMode extends OpMode
             robot.leftDrive.setPower(leftPower);
             robot.rightDrive.setPower(rightPower);
 
+            /*
             // Arm Controls
             robot.arm.armBase.setPower((gamepad1.right_trigger - gamepad1.left_trigger) / armSpeed + 1);
             robot.arm.armExtender.setPower(((gamepad1.right_bumper) ? 1 : 0) - ((gamepad1.left_bumper) ? 1 : 0));
@@ -168,6 +169,7 @@ public class MainTeleOpMode extends OpMode
                     }
                     break;
             }
+            */
 
             // Spinner Controls
             if (gamepad1.y) {
