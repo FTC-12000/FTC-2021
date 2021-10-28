@@ -16,14 +16,21 @@ import org.firstinspires.ftc.teamcode.settings.SettingsMenu;
 @TeleOp(name = "Tele: Main", group = "12000")
 public class MainTeleOpMode extends OpMode
 {
+    // Big Bois
+    private final KonamiCode konamiCode = new KonamiCode();
     private final ElapsedTime runtime = new ElapsedTime();
     private final Robot robot = new Robot(hardwareMap);
     private SettingsMenu settings;
 
+    // Constants
+    private static final double DIRECTIONAL_STABILITY_RATIO = 1;
+
+    // Settings Variables
     private int driveMode;
     private int armMode;
+    private int directionStability;
 
-    private final KonamiCode konamiCode = new KonamiCode();
+    // Working Global Variables
     private int loop = 0;
     private boolean paused = false;
 
@@ -52,6 +59,7 @@ public class MainTeleOpMode extends OpMode
     public void start() {
         driveMode = settings.getSetting("drive_mode");
         armMode = settings.getSetting("arm_mode");
+        directionStability = settings.getSetting("directional_stability");
         runtime.reset();
     }
 
@@ -70,6 +78,7 @@ public class MainTeleOpMode extends OpMode
             }
             settings.loop();
         } else {
+            // Pause (Re-opens the settings menu)
             if (loop > 100 && gamepad1.start) {
                 paused = true;
 
@@ -82,6 +91,7 @@ public class MainTeleOpMode extends OpMode
                 return;
             }
 
+            // Drive Controls
             float leftY = -gamepad1.left_stick_y;
             float rightY = -gamepad1.right_stick_y;
             float leftX = -gamepad1.left_stick_x;
@@ -125,17 +135,15 @@ public class MainTeleOpMode extends OpMode
                     break;
             }
 
-            if (settings.getSetting("directional_stability") == 1) {
-                double SPEED_RATIO = 1;
-                //leftPower *= SPEED_RATIO;
-                //rightPower *= (1 - SPEED_RATIO);
+            if (directionStability == 0) {
+                // Uncomment these after measuring and setting constant DIRECTIONAL_STABILITY_RATIO
+                //leftPower *= DIRECTIONAL_STABILITY_RATIO;
+                //rightPower *= (1 - DIRECTIONAL_STABILITY_RATIO);
             }
             robot.leftDrive.setPower(leftPower);
             robot.rightDrive.setPower(rightPower);
 
-            telemetry.addData("Status", "Run Time: " + runtime.toString());
-            telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
-
+            // Arm Controls
             robot.arm.armBase.setPower(gamepad1.right_trigger - gamepad1.left_trigger);
             robot.arm.armExtender.setPower(((gamepad1.right_bumper) ? 1 : 0) - ((gamepad1.left_bumper) ? 1 : 0));
 
@@ -157,11 +165,16 @@ public class MainTeleOpMode extends OpMode
                     break;
             }
 
+            // Spinner Controls
             if (gamepad1.y) {
                 robot.spinner.setPower(1);
             } else {
                 robot.spinner.setPower(0);
             }
+
+            // Telemetry
+            telemetry.addData("Status", "Run Time: " + runtime.toString());
+            telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
         }
 
         loop++;
@@ -170,6 +183,6 @@ public class MainTeleOpMode extends OpMode
     // Code to run ONCE after the driver hits STOP
     @Override
     public void stop() {
-        
+        // Bobot has been eliminated
     }
 }
