@@ -149,7 +149,7 @@ public class MainTeleOpMode extends OpMode
 
             // Arm Controls
             robot.arm.armBase.setPower((gamepad1.right_trigger - gamepad1.left_trigger) / armSpeed + 1);
-            robot.arm.armExtender.setPower((((gamepad1.right_bumper) ? 1 : 0) - ((gamepad1.left_bumper) ? 1 : 0)) / (float)armSpeed + 1);
+            robot.arm.armExtender.setPower(((gamepad1.right_bumper) ? 1 : 0) - ((gamepad1.left_bumper) ? 1 : 0));
 
             switch (armMode) {
                 case 1: // compact
