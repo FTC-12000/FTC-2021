@@ -28,6 +28,7 @@ public class MainTeleOpMode extends OpMode
     // Settings Variables
     private int driveMode;
     private int armMode;
+    private int armSpeed;
     private int directionStability;
 
     // Working Global Variables
@@ -59,6 +60,7 @@ public class MainTeleOpMode extends OpMode
     public void start() {
         driveMode = settings.getSetting("drive_mode");
         armMode = settings.getSetting("arm_mode");
+        armSpeed = settings.getSetting("arm_speed");
         directionStability = settings.getSetting("directional_stability");
         runtime.reset();
     }
@@ -72,6 +74,8 @@ public class MainTeleOpMode extends OpMode
 
                 driveMode = settings.getSetting("drive_mode");
                 armMode = settings.getSetting("arm_mode");
+                armSpeed = settings.getSetting("arm_speed");
+                directionStability = settings.getSetting("directional_stability");
 
                 loop = 0;
                 return;
@@ -144,8 +148,8 @@ public class MainTeleOpMode extends OpMode
             robot.rightDrive.setPower(rightPower);
 
             // Arm Controls
-            robot.arm.armBase.setPower(gamepad1.right_trigger - gamepad1.left_trigger);
-            robot.arm.armExtender.setPower(((gamepad1.right_bumper) ? 1 : 0) - ((gamepad1.left_bumper) ? 1 : 0));
+            robot.arm.armBase.setPower((gamepad1.right_trigger - gamepad1.left_trigger) / armSpeed + 1);
+            robot.arm.armExtender.setPower((((gamepad1.right_bumper) ? 1 : 0) - ((gamepad1.left_bumper) ? 1 : 0)) / (float)armSpeed + 1);
 
             switch (armMode) {
                 case 1: // compact

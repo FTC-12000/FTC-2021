@@ -31,6 +31,17 @@ public class SettingsUtil {
         setting = new Setting("directional_stability","Directional Stability",2, translation);
         settings.add(setting);
 
+        // Arm Speed
+        translation = new ArrayList<>();
+        translation.add("1:1 (Warning: Very fast!)");
+        translation.add("1:2");
+        translation.add("1:3");
+        translation.add("1:4");
+        translation.add("1:5");
+        translation.add("1:6");
+        setting = new Setting("arm_mode", "Arm Mode", 6, translation, 3);
+        settings.add(setting);
+
         // Arm Mode
         translation = new ArrayList<>();
         translation.add("Compact (Recommended)");
