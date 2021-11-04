@@ -63,11 +63,11 @@ public class SettingsUtil {
         setting = new Setting("wait_time", "Wait Time", 17, null);
         settings.add(setting);
 
-        // Spinner
+        // Carousel
         translation = new ArrayList<>();
         translation.add("Off");
         translation.add("On");
-        setting = new Setting("spinner","Spinner",2, translation);
+        setting = new Setting("carousel","Carousel",2, translation);
         settings.add(setting);
 
         // Turn Direction

@@ -17,7 +17,7 @@ public class BasicAutoOpMode extends OpMode {
     private float driveTime;
     private float waitTime;
     private int turnDirection;
-    private int spinner;
+    private int carousel;
 
     private final ElapsedTime runtime = new ElapsedTime();
     private final Robot robot = new Robot(hardwareMap);
@@ -39,13 +39,30 @@ public class BasicAutoOpMode extends OpMode {
         driveTime = settings.getSetting("drive_time");
         waitTime = settings.getSetting("wait_time");
         turnDirection = settings.getSetting("turn_direction");
-        spinner = settings.getSetting("spinner");
+        carousel = settings.getSetting("carousel");
         runtime.reset();
     }
 
     @Override
     public void loop() {
-        robot.spinner.setPower(spinner);
+        if (carousel == 1) {
+            robot.spinner.setPower(1);
+            /*if (runtime.time() < 1) {
+                robot.rightDrive.setPower(1);
+                robot.leftDrive.setPower(-1);
+            } else {
+                robot.rightDrive.setPower(0);
+                robot.leftDrive.setPower(0);
+            }
+            if (runtime.time() < 4 && runtime.time() > 1) {
+                robot.rightDrive.setPower(-1);
+                robot.leftDrive.setPower(1);
+            } else {
+                robot.rightDrive.setPower(0);
+                robot.leftDrive.setPower(0);
+            }
+            return;*/
+        }
         if (runtime.time() > waitTime) {
             if (runtime.time() < driveTime + waitTime) {
                 switch (turnDirection) {
@@ -62,7 +79,6 @@ public class BasicAutoOpMode extends OpMode {
                         robot.rightDrive.setPower(0.2);
                         break;
                 }
-
             } else {
                 robot.leftDrive.setPower(0);
                 robot.rightDrive.setPower(0);
