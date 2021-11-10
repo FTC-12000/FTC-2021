@@ -98,6 +98,14 @@ public class SettingsMenu {
             if (key.equals(selected)) {
                 line += " <-";
             }
+
+            // janky af lol
+            /*
+            if (settings.get(key).parent == null) {
+                telemetry.addData(settings.get(key).name, line);
+            } else if (settings.get(settings.get(key).parent).value == 1) {
+                telemetry.addData(settings.get(key).name, line);
+            }*/
             telemetry.addData(settings.get(key).name, line);
         }
     }

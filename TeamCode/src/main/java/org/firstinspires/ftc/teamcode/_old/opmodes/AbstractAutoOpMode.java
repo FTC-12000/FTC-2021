@@ -1,13 +1,13 @@
-package org.firstinspires.ftc.teamcode.opmodes;
+package org.firstinspires.ftc.teamcode._old.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-import org.firstinspires.ftc.teamcode.hardware.Robot;
+import org.firstinspires.ftc.teamcode._old.hardware.Robot;
 
 /*
 * The is a base class for our AutoOp OpModes, to hold universal control methods
-* For new Outlaw Chassis
 */
+@Deprecated
 public abstract class AbstractAutoOpMode extends OpMode {
     private enum Direction {
         FORWARDS,
@@ -32,21 +32,20 @@ public abstract class AbstractAutoOpMode extends OpMode {
         double currentTime = startTime;
 
         if (degrees > 0) {
-            robot.setLeftDrivePower(1);
-            robot.setRightDrivePower(-1);
+            robot.leftDrive.setPower(1);
+            robot.rightDrive.setPower(-1);
         } else {
-            robot.setLeftDrivePower(-1);
-            robot.setRightDrivePower(1);
+            robot.leftDrive.setPower(-1);
+            robot.rightDrive.setPower(1);
         }
 
         while (currentTime - startTime < degrees / TURN_SPEED) {
             currentTime = getRuntime();
         }
 
-        robot.setLeftDrivePower(0);
-        robot.setRightDrivePower(0);
+        robot.leftDrive.setPower(0);
+        robot.rightDrive.setPower(0);
     }
-
     private void turn(Direction direction) {
         switch (direction) {
             case LEFT:
@@ -61,16 +60,16 @@ public abstract class AbstractAutoOpMode extends OpMode {
     private void drive(Direction direction) {
         switch (direction) {
             case FORWARDS:
-                robot.setLeftDrivePower(1);
-                robot.setRightDrivePower(1);
+                robot.leftDrive.setPower(1);
+                robot.leftDrive.setPower(1);
                 break;
             case BACKWARDS:
-                robot.setLeftDrivePower(-1);
-                robot.setRightDrivePower(-1);
+                robot.leftDrive.setPower(-1);
+                robot.leftDrive.setPower(-1);
                 break;
             case STOP:
-                robot.setLeftDrivePower(0);
-                robot.setRightDrivePower(0);
+                robot.leftDrive.setPower(0);
+                robot.leftDrive.setPower(0);
                 break;
         }
     }
@@ -87,10 +86,5 @@ public abstract class AbstractAutoOpMode extends OpMode {
 
         drive(Direction.STOP);
         drive(Direction.STOP);
-    }
-
-    private void wait(double seconds) {
-        double startTime = getRuntime();
-        while (getRuntime() - startTime <= seconds) { }
     }
 }

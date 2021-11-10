@@ -1,10 +1,11 @@
-package org.firstinspires.ftc.teamcode.opmodes;
+package org.firstinspires.ftc.teamcode._old.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.hardware.Robot;
+import org.firstinspires.ftc.teamcode._old.hardware.Robot;
 import org.firstinspires.ftc.teamcode.settings.SettingsUtil;
 import org.firstinspires.ftc.teamcode.settings.SettingsMenu;
 
@@ -12,6 +13,7 @@ import org.firstinspires.ftc.teamcode.settings.SettingsMenu;
 * Basic AutoOp OpMode, for use in early competition before we finish the main one
 * It just spins the spinner to drop a duck, and drives into the storage area, but is highly configurable at runtime
 */
+@Deprecated
 @Autonomous(name = "Auto: Basic", group = "12000")
 public class BasicAutoOpMode extends OpMode {
     private float driveTime;

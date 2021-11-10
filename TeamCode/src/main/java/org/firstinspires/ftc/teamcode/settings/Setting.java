@@ -15,8 +15,16 @@ public class Setting {
     public int max;
     public List<String> translation;
 
-    public Setting(String id, String name, int max, @Nullable List<String> translation) {
+    public Setting(String id, String name, int max) {
+        this(id, name, max, null, 0);
+    }
+
+    public Setting(String id, String name, int max, List<String> translation) {
         this(id, name, max, translation, 0);
+    }
+
+    public Setting(String id, String name, int max, int value) {
+        this(id, name, max, null, value);
     }
 
     public Setting(String id, String name, int max, @Nullable List<String> translation, int value) {

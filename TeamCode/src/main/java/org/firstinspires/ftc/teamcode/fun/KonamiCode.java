@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.fun;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-import org.firstinspires.ftc.teamcode.hardware.Robot;
+import org.firstinspires.ftc.teamcode._old.hardware.Robot;
 
 /*
 * An easter egg, made out of terrible code. Seriously, don't scroll down unless you want psychic damage

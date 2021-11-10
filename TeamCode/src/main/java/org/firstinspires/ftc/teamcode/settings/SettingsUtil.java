@@ -58,9 +58,9 @@ public class SettingsUtil {
         Setting setting;
 
         // Drive Time and Wait Time
-        setting = new Setting("drive_time", "Drive Time", 17, null, 8);
+        setting = new Setting("drive_time", "Drive Time", 17, 8);
         settings.add(setting);
-        setting = new Setting("wait_time", "Wait Time", 17, null);
+        setting = new Setting("wait_time", "Wait Time", 17);
         settings.add(setting);
 
         // Carousel
@@ -85,6 +85,27 @@ public class SettingsUtil {
         ArrayList<Setting> settings = new ArrayList<>();
         ArrayList<String> translation;
         Setting setting;
+
+        // Team
+        translation = new ArrayList<>();
+        translation.add("Red");
+        translation.add("Blue");
+        setting = new Setting("team", "Team", 2, translation);
+        settings.add(setting);
+
+        // Position
+        translation = new ArrayList<>();
+        translation.add("Front");
+        translation.add("Back");
+        setting = new Setting("position", "Position", 2, translation);
+        settings.add(setting);
+
+        // Carousel
+        translation = new ArrayList<>();
+        translation.add("Off");
+        translation.add("On");
+        setting = new Setting("carousel","Carousel",2, translation);
+        settings.add(setting);
 
         return new SettingsMenu(settings, telemetry, gamepad);
     }
