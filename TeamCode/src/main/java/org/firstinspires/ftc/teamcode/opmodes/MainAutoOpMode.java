@@ -14,12 +14,12 @@ import org.firstinspires.ftc.teamcode.settings.SettingsUtil;
 @Disabled
 @Autonomous(name = "Auto: Main", group = "12000")
 public class MainAutoOpMode extends AbstractAutoOpMode {
-    private Robot robot = new Robot(hardwareMap);
+    private Robot robot = new Robot();
     private SettingsMenu settings;
 
     @Override
     public void init() {
-        robot.init();
+        robot.init(hardwareMap);
         settings = SettingsUtil.createMainAutoOpSettings(telemetry, gamepad1);
     }
 

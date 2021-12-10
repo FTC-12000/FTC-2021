@@ -21,7 +21,7 @@ public abstract class AbstractAutoOpMode extends OpMode {
     private static final double SPEED = 10; // Meters / Second
     private static final double TURN_SPEED = 10; // Degrees / Second
 
-    private final Robot robot = new Robot(hardwareMap);
+    private final Robot robot = new Robot();
 
     private void turn(double degrees) {
         if (degrees > 180) {

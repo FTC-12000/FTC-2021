@@ -9,35 +9,27 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 * For new Outlaw Chassis
 */
 public class Robot {
-    private static Robot instance;
-    private static HardwareMap hardwareMap;
-
     private DcMotor leftDrive1;
     private DcMotor leftDrive2;
     private DcMotor rightDrive1;
     private DcMotor rightDrive2;
 
-    public DcMotor spinner;
+    //private DcMotor spinner;
 
-    public Robot(HardwareMap hardwareMap) {
-        instance = this;
-        Robot.hardwareMap = hardwareMap;
-    }
-
-    public void init() {
+    public void init(HardwareMap hardwareMap) {
         leftDrive1 = hardwareMap.get(DcMotor.class, "left_drive_1");
         leftDrive2 = hardwareMap.get(DcMotor.class, "left_drive_2");
         rightDrive1 = hardwareMap.get(DcMotor.class, "right_drive_1");
         rightDrive2 = hardwareMap.get(DcMotor.class, "right_drive_2");
 
-        spinner = hardwareMap.get(DcMotor.class, "spinner");
+        //spinner = hardwareMap.get(DcMotor.class, "spinner");
 
         leftDrive1.setDirection(DcMotor.Direction.FORWARD);
         leftDrive2.setDirection(DcMotor.Direction.FORWARD);
-        rightDrive1.setDirection(DcMotor.Direction.REVERSE);
-        rightDrive2.setDirection(DcMotor.Direction.REVERSE);
+        rightDrive1.setDirection(DcMotor.Direction.FORWARD);
+        rightDrive2.setDirection(DcMotor.Direction.FORWARD);
 
-        spinner.setDirection(DcMotorSimple.Direction.FORWARD);
+        //spinner.setDirection(DcMotor.Direction.FORWARD);
     }
 
     public void setLeftDrivePower(double power) {
@@ -50,16 +42,7 @@ public class Robot {
         rightDrive2.setPower(power);
     }
 
-    public static Robot getInstance() {
-        return instance;
-    }
-
-    public static HardwareMap getHardwareMap() {
-        if (hardwareMap != null) {
-            return hardwareMap;
-        } else {
-            System.out.println("NULL, RIP");
-            return null;
-        }
+    public void setSpinnerPower(double power) {
+        //spinner.setPower(power);
     }
 }

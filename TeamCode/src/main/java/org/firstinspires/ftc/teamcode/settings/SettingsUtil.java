@@ -24,14 +24,7 @@ public class SettingsUtil {
         setting = new Setting("drive_mode", "Drive Mode", 3, translation);
         settings.add(setting);
 
-        // Directional Stability
-        translation = new ArrayList<>();
-        translation.add("On");
-        translation.add("Off");
-        setting = new Setting("directional_stability","Directional Stability",2, translation);
-        settings.add(setting);
-
-        // Arm Speed
+        /* // Arm Speed
         translation = new ArrayList<>();
         translation.add("1:1 (Warning: Very fast!)");
         translation.add("1:2");
@@ -39,7 +32,7 @@ public class SettingsUtil {
         translation.add("1:4");
         translation.add("1:5");
         translation.add("1:6");
-        setting = new Setting("arm_mode", "Arm Mode", 6, translation, 3);
+        setting = new Setting("arm_speed", "Arm Speed", 6, translation, 3);
         settings.add(setting);
 
         // Arm Mode
@@ -48,6 +41,7 @@ public class SettingsUtil {
         translation.add("Expanded");
         setting = new Setting("arm_mode", "Arm Mode", 2, translation);
         settings.add(setting);
+        */
 
         return new SettingsMenu(settings, telemetry, gamepad);
     }

@@ -14,13 +14,12 @@ import org.firstinspires.ftc.teamcode.settings.SettingsUtil;
 * Main TeleOp OpMode. This class is mostly complete, and will get better documentation later.
 * For new Outlaw Chassis.
 */
-@Disabled
 @TeleOp(name = "Tele: Main", group = "12000")
 public class MainTeleOpMode extends OpMode
 {
     // Big Bois
     private final ElapsedTime runtime = new ElapsedTime();
-    private final Robot robot = new Robot(hardwareMap);
+    private final Robot robot = new Robot();
     private SettingsMenu settings;
 
     // Settings Variables
@@ -33,7 +32,7 @@ public class MainTeleOpMode extends OpMode
     // Code to run ONCE when the driver hits INIT
     @Override
     public void init() {
-        robot.init();
+        robot.init(hardwareMap);
         settings = SettingsUtil.createTeleOpSettings(telemetry, gamepad1);
     }
 
@@ -79,16 +78,11 @@ public class MainTeleOpMode extends OpMode
                 return;
             }
 
-            drive();
+            if (gamepad1.start) { robot.setSpinnerPower(1); }
+            else if (gamepad1.back) { robot.setSpinnerPower(-1); }
+            else { robot.setSpinnerPower(0); }
 
-            // Spinner Controls
-            if (gamepad1.y) {
-                robot.spinner.setPower(1);
-            } else if (gamepad1.x) {
-                robot.spinner.setPower(-1);
-            } else {
-                robot.spinner.setPower(0);
-            }
+            drive();
         }
 
         loop++;
