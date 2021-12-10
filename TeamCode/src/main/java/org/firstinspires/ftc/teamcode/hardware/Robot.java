@@ -14,7 +14,7 @@ public class Robot {
     private DcMotor rightDrive1;
     private DcMotor rightDrive2;
 
-    //private DcMotor spinner;
+    private DcMotor spinner;
 
     public void init(HardwareMap hardwareMap) {
         leftDrive1 = hardwareMap.get(DcMotor.class, "left_drive_1");
@@ -22,14 +22,14 @@ public class Robot {
         rightDrive1 = hardwareMap.get(DcMotor.class, "right_drive_1");
         rightDrive2 = hardwareMap.get(DcMotor.class, "right_drive_2");
 
-        //spinner = hardwareMap.get(DcMotor.class, "spinner");
+        spinner = hardwareMap.get(DcMotor.class, "spinner");
 
         leftDrive1.setDirection(DcMotor.Direction.FORWARD);
         leftDrive2.setDirection(DcMotor.Direction.FORWARD);
-        rightDrive1.setDirection(DcMotor.Direction.FORWARD);
+        rightDrive1.setDirection(DcMotor.Direction.REVERSE);
         rightDrive2.setDirection(DcMotor.Direction.FORWARD);
 
-        //spinner.setDirection(DcMotor.Direction.FORWARD);
+        spinner.setDirection(DcMotor.Direction.FORWARD);
     }
 
     public void setLeftDrivePower(double power) {
@@ -43,6 +43,6 @@ public class Robot {
     }
 
     public void setSpinnerPower(double power) {
-        //spinner.setPower(power);
+        spinner.setPower(power);
     }
 }
