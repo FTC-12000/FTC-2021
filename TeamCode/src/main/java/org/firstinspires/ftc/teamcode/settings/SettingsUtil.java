@@ -24,6 +24,13 @@ public class SettingsUtil {
         setting = new Setting("drive_mode", "Drive Mode", 3, translation);
         settings.add(setting);
 
+        // Spinner Direction
+        translation = new ArrayList<>();
+        translation.add("Clockwise");
+        translation.add("Counterclockwise");
+        setting = new Setting("spinner_direction", "Spinner Direction", 2, translation);
+        settings.add(setting);
+
         /* // Arm Speed
         translation = new ArrayList<>();
         translation.add("1:1 (Warning: Very fast!)");
