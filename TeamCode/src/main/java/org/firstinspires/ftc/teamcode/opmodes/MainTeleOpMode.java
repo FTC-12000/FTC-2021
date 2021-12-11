@@ -78,8 +78,8 @@ public class MainTeleOpMode extends OpMode
                 return;
             }
 
-            if (gamepad1.start) { robot.setSpinnerPower(1); }
-            else if (gamepad1.back) { robot.setSpinnerPower(-1); }
+            if (gamepad1.a) { robot.setSpinnerPower(1); }
+            else if (gamepad1.b) { robot.setSpinnerPower(-1); }
             else { robot.setSpinnerPower(0); }
 
             drive();
