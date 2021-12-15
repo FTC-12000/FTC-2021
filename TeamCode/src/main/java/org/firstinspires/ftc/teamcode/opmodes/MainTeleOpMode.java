@@ -99,8 +99,8 @@ public class MainTeleOpMode extends OpMode
 
         switch (driveMode) {
             case 0: // dual stick
-                leftPower = leftY;
-                rightPower = rightY;
+                leftPower = leftY / 1.5f;
+                rightPower = rightY / 1.5f;
                 break;
             case 1: // single stick
                 leftX = -leftX;
