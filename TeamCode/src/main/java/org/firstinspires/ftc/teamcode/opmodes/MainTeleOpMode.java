@@ -1,4 +1,5 @@
 // i forgor
+// i forgot i wrote this
 package org.firstinspires.ftc.teamcode.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
@@ -99,12 +100,12 @@ public class MainTeleOpMode extends OpMode
         float leftPower = 0;
         float rightPower = 0;
 
-        float speedMultiplier = 0;
+        float speedMultiplier = 0.25f * driveSpeed + 0.25f;
 
         switch (driveMode) {
             case 0: // dual stick
-                leftPower = leftY / 1.5f;
-                rightPower = rightY / 1.5f;
+                leftPower = leftY;
+                rightPower = rightY;
                 break;
             case 1: // single stick
                 leftX = -leftX;
@@ -136,7 +137,7 @@ public class MainTeleOpMode extends OpMode
                 break;
         }
 
-        robot.setLeftDrivePower(leftPower);
-        robot.setRightDrivePower(rightPower);
+        robot.setLeftDrivePower(leftPower * speedMultiplier);
+        robot.setRightDrivePower(rightPower * speedMultiplier);
     }
 }
