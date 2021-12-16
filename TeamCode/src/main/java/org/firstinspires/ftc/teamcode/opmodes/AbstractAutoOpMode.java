@@ -23,6 +23,8 @@ public abstract class AbstractAutoOpMode extends OpMode {
 
     private final Robot robot = new Robot();
 
+    
+
     private void turn(double degrees) {
         if (degrees > 180) {
             degrees = -180 + (degrees - 180);
