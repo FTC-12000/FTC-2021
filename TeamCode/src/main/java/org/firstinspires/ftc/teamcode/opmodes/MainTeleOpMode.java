@@ -24,6 +24,7 @@ public class MainTeleOpMode extends OpMode
 
     // Settings Variables
     private int driveMode;
+    private int driveSpeed;
 
     // Working Global Variables
     private int loop = 0;
@@ -44,6 +45,7 @@ public class MainTeleOpMode extends OpMode
 
     private void updateSettings() {
         driveMode = settings.getSetting("drive_mode");
+        driveSpeed = settings.getSetting("drive_speed");
     }
 
     // Code to run ONCE when the driver hits PLAY
@@ -96,6 +98,8 @@ public class MainTeleOpMode extends OpMode
 
         float leftPower = 0;
         float rightPower = 0;
+
+        float speedMultiplier = 0;
 
         switch (driveMode) {
             case 0: // dual stick

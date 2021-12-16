@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.settings;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 
+import org.checkerframework.checker.units.qual.A;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import java.util.ArrayList;
@@ -31,24 +32,13 @@ public class SettingsUtil {
         setting = new Setting("spinner_direction", "Spinner Direction", 2, translation);
         settings.add(setting);
 
-        /* // Arm Speed
+        // Drive Speed
         translation = new ArrayList<>();
-        translation.add("1:1 (Warning: Very fast!)");
-        translation.add("1:2");
-        translation.add("1:3");
-        translation.add("1:4");
-        translation.add("1:5");
-        translation.add("1:6");
-        setting = new Setting("arm_speed", "Arm Speed", 6, translation, 3);
-        settings.add(setting);
-
-        // Arm Mode
-        translation = new ArrayList<>();
-        translation.add("Compact (Recommended)");
-        translation.add("Expanded");
-        setting = new Setting("arm_mode", "Arm Mode", 2, translation);
-        settings.add(setting);
-        */
+        translation.add("25%");
+        translation.add("50%");
+        translation.add("75%");
+        translation.add("100%");
+        setting = new Setting("drive_speed", "Drive Speed", 4, translation, 2);
 
         return new SettingsMenu(settings, telemetry, gamepad);
     }
