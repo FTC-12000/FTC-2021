@@ -11,6 +11,5 @@ public class MainAutoOpMode extends AbstractAutoOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         super.runOpMode();
-        //move(Direction.FORWARDS, 1500, 1);
     }
 }
