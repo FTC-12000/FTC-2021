@@ -57,8 +57,8 @@ public class SettingsUtil {
 
         // Position
         translation = new ArrayList<>();
-        translation.add("Front");
-        translation.add("Back");
+        translation.add("Left");
+        translation.add("Right");
         setting = new Setting("position", "Position", 2, translation);
         settings.add(setting);
 

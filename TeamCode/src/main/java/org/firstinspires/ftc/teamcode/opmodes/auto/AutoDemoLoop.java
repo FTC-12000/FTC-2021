@@ -1,9 +1,9 @@
-package org.firstinspires.ftc.teamcode.opmodes;
+package org.firstinspires.ftc.teamcode.opmodes.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 @Autonomous(name = "Auto: Demo Loop", group = "12000")
-public class DemoLoopAutoOpMode extends AbstractAutoOpMode {
+public class AutoDemoLoop extends AbstractAutoOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         super.runOpMode();

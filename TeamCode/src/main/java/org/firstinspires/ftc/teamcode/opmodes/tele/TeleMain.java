@@ -1,6 +1,6 @@
 // i forgor
 // i forgot i wrote this
-package org.firstinspires.ftc.teamcode.opmodes;
+package org.firstinspires.ftc.teamcode.opmodes.tele;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -16,7 +16,7 @@ import org.firstinspires.ftc.teamcode.settings.SettingsUtil;
 * For new Outlaw Chassis.
 */
 @TeleOp(name = "Tele: Main", group = "12000")
-public class MainTeleOpMode extends OpMode
+public class TeleMain extends OpMode
 {
     // Big Bois
     private final ElapsedTime runtime = new ElapsedTime();
@@ -91,6 +91,8 @@ public class MainTeleOpMode extends OpMode
 
             drive();
         }
+
+        telemetry.clear();
 
         loop++;
     }

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.opmodes;
+package org.firstinspires.ftc.teamcode.opmodes.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -30,10 +30,14 @@ public abstract class AbstractAutoOpMode extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        waitForStart();
         robot.init(hardwareMap);
-        settings = SettingsUtil.createMainAutoOpSettings(telemetry, gamepad1);
+        settings = getSettings();
+        telemetry.setMsTransmissionInterval(1);
+        while (!isStarted())  { if (settings != null) { settings.loop(); telemetry.update(); sleep(1); }}
+        waitForStart();
     }
+
+    public SettingsMenu getSettings() { return null; }
 
     /**
      * Drives the specified distance in meters.
