@@ -85,6 +85,10 @@ public class MainTeleOpMode extends OpMode
             else if (gamepad1.b) { robot.setSpinnerPower(-1); }
             else { robot.setSpinnerPower(0); }
 
+            telemetry.clear();
+            telemetry.addData("Left Encoder", robot.getLeftEncoderPos());
+            telemetry.addData("Right Encoder", robot.getRightEncoderPos());
+
             drive();
         }
 

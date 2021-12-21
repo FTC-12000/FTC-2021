@@ -1,22 +1,23 @@
 package org.firstinspires.ftc.teamcode.hardware;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 /*
-* This class holds all of the hardware (and setup code) for the robot. The arm is a separate class, Arm.java
-* For new Outlaw Chassis
+* This class holds all of the hardware (and setup code) for the robot.
 */
 public class Robot {
+    // Drive motors
     private DcMotor leftDrive1;
     private DcMotor leftDrive2;
     private DcMotor rightDrive1;
     private DcMotor rightDrive2;
 
+    // Spinner motor
     private DcMotor spinner;
 
     public void init(HardwareMap hardwareMap) {
+        // Initializing motors
         leftDrive1 = hardwareMap.get(DcMotor.class, "left_drive_1");
         leftDrive2 = hardwareMap.get(DcMotor.class, "left_drive_2");
         rightDrive1 = hardwareMap.get(DcMotor.class, "right_drive_1");
@@ -24,6 +25,7 @@ public class Robot {
 
         spinner = hardwareMap.get(DcMotor.class, "spinner");
 
+        // Setting motor directions
         leftDrive1.setDirection(DcMotor.Direction.FORWARD);
         leftDrive2.setDirection(DcMotor.Direction.FORWARD);
         rightDrive1.setDirection(DcMotor.Direction.REVERSE);
@@ -32,6 +34,7 @@ public class Robot {
         spinner.setDirection(DcMotor.Direction.FORWARD);
     }
 
+    // region Wrappers for setting power level because we need to set 2 drive motors and it looks nicer
     public void setLeftDrivePower(double power) {
         leftDrive1.setPower(power);
         leftDrive2.setPower(power);
@@ -45,4 +48,9 @@ public class Robot {
     public void setSpinnerPower(double power) {
         spinner.setPower(power);
     }
+    // endregion
+
+    // Encoder wrappers
+    public int getLeftEncoderPos() { return leftDrive1.getCurrentPosition(); }
+    public int getRightEncoderPos() { return rightDrive1.getCurrentPosition(); }
 }

@@ -12,18 +12,20 @@ import java.util.ArrayList;
 * I made this because:
 *  A. I heard the hell of having tons of OpModes, specifically autonomous
 *  B. I over-engineer everything, and this is no exception
+*  C. "I'm working on a settings menu for it" - Calvin to Jared, on every project i work on
 */
 public class SettingsMenu {
-    private IndexedHashMap<String, Setting> settings = new IndexedHashMap<>();
+    private final IndexedHashMap<String, Setting> settings = new IndexedHashMap<>();
 
-    private Telemetry telemetry;
-    private Gamepad gamepad;
+    private final Telemetry telemetry;
+    private final Gamepad gamepad;
     private String selected;
 
     private int inputDelayLoop;
 
     public int getSetting(String key) {
-        return settings.get(key).value;
+        if (settings.containsKey(key)) { return settings.get(key).value; }
+        else { return -1; }
     }
     
     public SettingsMenu(ArrayList<Setting> settings, Telemetry telemetry, Gamepad gamepad) {
@@ -99,13 +101,6 @@ public class SettingsMenu {
                 line += " <-";
             }
 
-            // janky af lol
-            /*
-            if (settings.get(key).parent == null) {
-                telemetry.addData(settings.get(key).name, line);
-            } else if (settings.get(settings.get(key).parent).value == 1) {
-                telemetry.addData(settings.get(key).name, line);
-            }*/
             telemetry.addData(settings.get(key).name, line);
         }
     }
