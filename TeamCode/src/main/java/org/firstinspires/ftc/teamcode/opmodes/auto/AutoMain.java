@@ -6,13 +6,16 @@ import org.firstinspires.ftc.teamcode.settings.SettingsMenu;
 import org.firstinspires.ftc.teamcode.settings.SettingsUtil;
 
 /*
- * This will eventually be our AutoOp, but for now we are using BasicAutoOpMode.java
+ * Main AutoOp
+ * Currently needs spinner pathing implemented, but everything else is good
  */
 @Autonomous(name = "Auto: Main", group = "12000")
 public class AutoMain extends AbstractAutoOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         super.runOpMode();
+        sleep(settings.getSetting("delay") * 5000L);
+
         int turnDir = 1;
         if (settings.getSetting("team") == 1) { turnDir = -1; }
 

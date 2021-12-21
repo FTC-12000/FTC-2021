@@ -69,6 +69,18 @@ public class SettingsUtil {
         setting = new Setting("carousel","Carousel",2, translation);
         settings.add(setting);
 
+        // Starting Delay
+        translation = new ArrayList<>();
+        translation.add("0 Seconds");
+        translation.add("5 Seconds");
+        translation.add("10 Seconds");
+        translation.add("15 Seconds");
+        translation.add("20 Seconds");
+        translation.add("25 Seconds");
+        translation.add("30 Seconds (Why?)");
+        setting = new Setting("delay","Start Delay",7, translation);
+        settings.add(setting);
+
         return new SettingsMenu(settings, telemetry, gamepad);
     }
 }
