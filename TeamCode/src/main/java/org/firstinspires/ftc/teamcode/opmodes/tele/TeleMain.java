@@ -80,10 +80,20 @@ public class TeleMain extends OpMode
                 loop = 0;
                 return;
             }
-
+            // spinner controls
             if (gamepad1.a) { robot.setSpinnerPower(1); }
             else if (gamepad1.b) { robot.setSpinnerPower(-1); }
             else { robot.setSpinnerPower(0); }
+
+            // arm controls
+            if (gamepad1.left_bumper) { robot.setArmActuator(1); }
+            else if (gamepad1.right_bumper) { robot.setArmActuator(-1); }
+            else { robot.setArmActuator(0); }
+
+            if (gamepad1.x) { robot.setArmGrabber(1); }
+            else if (gamepad1.y) { robot.setArmGrabber(-1); }
+            else { robot.setArmGrabber(0); }
+
 
             telemetry.clear();
             telemetry.addData("Left Encoder", robot.getLeftEncoderPos());
