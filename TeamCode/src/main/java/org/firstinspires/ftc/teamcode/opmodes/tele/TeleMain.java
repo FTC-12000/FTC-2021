@@ -86,12 +86,12 @@ public class TeleMain extends OpMode
             else { robot.setSpinnerPower(0); }
 
             // arm controls
-            if (gamepad1.left_bumper) { robot.setArmActuator(1); }
-            else if (gamepad1.right_bumper) { robot.setArmActuator(-1); }
+            if (gamepad1.left_bumper) { robot.setArmActuator(0.75f); }
+            else if (gamepad1.right_bumper) { robot.setArmActuator(-0.75f); }
             else { robot.setArmActuator(0); }
 
-            if (gamepad1.x) { robot.setArmGrabber(1); }
-            else if (gamepad1.y) { robot.setArmGrabber(-1); }
+            if (gamepad1.x) { robot.setArmGrabber(0.75f); }
+            else if (gamepad1.y) { robot.setArmGrabber(-0.75f); }
             else { robot.setArmGrabber(0); }
 
 
