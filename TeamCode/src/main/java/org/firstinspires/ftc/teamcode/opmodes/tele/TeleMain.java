@@ -142,6 +142,7 @@ public class TeleMain extends OpMode
                 rightPower = (V - W) / 2;
                 break;
             case 3: // battlefield controls (cursed) (2 hours later edit: this took way too long to figure out something this simple)
+                // another hour later, it took way too long to find out how to use the damn triggers (analog) instead of bumper (digital)
                 float TP = -RT + LT;
                 leftX = -leftX;
                 V = (100 - Math.abs(leftX)) * (TP / 100) + TP;
