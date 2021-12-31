@@ -142,12 +142,10 @@ public class TeleMain extends OpMode
                 rightPower = (V - W) / 2;
                 break;
             case 3: // battlefield controls (cursed) (2 hours later edit: this took way too long to figure out something this simple)
-                float wtf =
+                float TP = -RT + LT;
                 leftX = -leftX;
-                ;
-
-                V = (100 - Math.abs(leftX)) * (RT / 100) + leftY;
-                W = (100 - Math.abs(RT)) * (leftX/100) + leftX;
+                V = (100 - Math.abs(leftX)) * (TP / 100) + TP;
+                W = (100 - Math.abs(TP)) * (leftX/100) + leftX;
                 leftPower = (V + W);
                 rightPower = (V - W);
                 break;
