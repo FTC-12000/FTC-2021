@@ -21,7 +21,8 @@ public class SettingsUtil {
         translation.add("Dual Stick (Recommended)");
         translation.add("Single Stick");
         translation.add("DPad");
-        setting = new Setting("drive_mode", "Drive Mode", 3, translation);
+        translation.add("Battlefield Controls (gamer moment)");
+        setting = new Setting("drive_mode", "Drive Mode", 4, translation);
         settings.add(setting);
 
         // Spinner Direction

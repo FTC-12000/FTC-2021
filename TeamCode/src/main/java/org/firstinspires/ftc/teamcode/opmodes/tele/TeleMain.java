@@ -101,11 +101,11 @@ public class TeleMain extends OpMode
         float leftY = -gamepad1.left_stick_y;
         float rightY = -gamepad1.right_stick_y;
         float leftX = -gamepad1.left_stick_x;
-        //float rightX = -gamepad1.right_stick_x; // This isn't used, too bad!
-
+        //float rightX = -gamepad1.right_stick_x;  This isn't used, too bad!
+        float RT = -gamepad1.right_trigger;
+        float LT = -gamepad1.left_trigger;
         float leftPower = 0;
         float rightPower = 0;
-
         float speedMultiplier = 0.25f * driveSpeed + 0.25f;
 
         switch (driveMode) {
@@ -141,6 +141,17 @@ public class TeleMain extends OpMode
                 leftPower = (V + W) / 2;
                 rightPower = (V - W) / 2;
                 break;
+            case 3: // battlefield controls (cursed) (2 hours later edit: this took way too long to figure out something this simple)
+                float wtf =
+                leftX = -leftX;
+                ;
+
+                V = (100 - Math.abs(leftX)) * (RT / 100) + leftY;
+                W = (100 - Math.abs(RT)) * (leftX/100) + leftX;
+                leftPower = (V + W);
+                rightPower = (V - W);
+                break;
+
         }
 
         robot.setLeftDrivePower(leftPower * speedMultiplier);
