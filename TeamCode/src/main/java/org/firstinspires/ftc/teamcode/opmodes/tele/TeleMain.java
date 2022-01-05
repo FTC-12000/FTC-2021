@@ -86,13 +86,16 @@ public class TeleMain extends OpMode
             else { robot.setSpinnerPower(0); }
 
             // arm controls
-            if (gamepad1.left_bumper) { robot.setArmActuator(0.75f); }
-            else if (gamepad1.right_bumper) { robot.setArmActuator(-0.75f); }
-            else { robot.setArmActuator(0); }
+            if (gamepad1.left_bumper) { robot.setArmActuatorPower(0.75f); }
+            else if (gamepad1.right_bumper) { robot.setArmActuatorPower(-0.75f); }
+            else { robot.setArmActuatorPower(0); robot. }
 
-            if (gamepad1.x) { robot.setArmGrabber(0.75f); }
-            else if (gamepad1.y) { robot.setArmGrabber(-0.75f); }
-            else { robot.setArmGrabber(0); }
+            if (gamepad1.x) { robot.setArmGrabberPower(0.75f); }
+            else if (gamepad1.y) { robot.setArmGrabberPower(-0.75f); }
+            else { robot.setArmGrabberPower(0); }
+
+            // locking arm in place
+
 
 
             telemetry.clear();
@@ -131,7 +134,7 @@ public class TeleMain extends OpMode
                 leftPower = (V + W) / 2;
                 rightPower = (V - W) / 2;
                 break;
-            case 2: // dpad - this is stupid, but zachs forcing my hand
+            case 2: // dpad - this is cursed, but zachs forcing my hand
                 leftX = 0;
                 leftY = 0;
                 if (gamepad1.dpad_up) {

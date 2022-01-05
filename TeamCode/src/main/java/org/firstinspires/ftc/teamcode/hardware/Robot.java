@@ -18,8 +18,8 @@ public class Robot {
     private DcMotor spinner;
 
     // Arm Motors
-    private DcMotor ArmActuator;
-    private DcMotor ArmGrabber;
+    private DcMotor armActuator;
+    private DcMotor armGrabber;
 
     public void init(HardwareMap hardwareMap) {
         // Initializing motors
@@ -30,8 +30,8 @@ public class Robot {
 
         spinner = hardwareMap.get(DcMotor.class, "spinner");
 
-        ArmActuator = hardwareMap.get(DcMotor.class, "arm_actuator");
-        ArmGrabber = hardwareMap.get(DcMotor.class, "arm_grabber");
+        armActuator = hardwareMap.get(DcMotor.class, "arm_actuator");
+        armGrabber = hardwareMap.get(DcMotor.class, "arm_grabber");
 
         // Setting motor directions
         leftDrive1.setDirection(DcMotor.Direction.FORWARD);
@@ -41,8 +41,8 @@ public class Robot {
 
         spinner.setDirection(DcMotor.Direction.FORWARD);
 
-        ArmActuator.setDirection(DcMotor.Direction.FORWARD);
-        ArmGrabber.setDirection(DcMotor.Direction.FORWARD);
+        armActuator.setDirection(DcMotor.Direction.FORWARD);
+        armGrabber.setDirection(DcMotor.Direction.FORWARD);
     }
 
     // region Wrappers for setting power level because we need to set 2 drive motors and it looks nicer
@@ -59,11 +59,13 @@ public class Robot {
     public void setSpinnerPower(double power) {
         spinner.setPower(power);
     }
-    public void setArmActuator(double power) { ArmActuator.setPower(power);}
-    public void setArmGrabber(double power) { ArmGrabber.setPower(power);}
+    public void setArmActuatorPower(double power) { armActuator.setPower(power);}
+    public void setArmGrabberPower(double power) { armGrabber.setPower(power);}
     // endregion
 
     // Encoder wrappers
     public int getLeftEncoderPos() { return leftDrive1.getCurrentPosition(); }
     public int getRightEncoderPos() { return rightDrive1.getCurrentPosition(); }
+
+    public int getArmActuatorEncoderPos() { return armActuator.getCurrentPosition(); }
 }
