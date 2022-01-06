@@ -54,6 +54,7 @@ public class TeleMain extends OpMode
     public void start() {
         updateSettings();
         runtime.reset();
+
     }
 
     // Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP
@@ -86,15 +87,30 @@ public class TeleMain extends OpMode
             else { robot.setSpinnerPower(0); }
 
             // arm controls
-            if (gamepad1.left_bumper) { robot.setArmActuatorPower(0.75f); }
-            else if (gamepad1.right_bumper) { robot.setArmActuatorPower(-0.75f); }
-            else { robot.setArmActuatorPower(0); robot. }
+            boolean armMoving = false;
+            int armTarget = 0;
+            if (gamepad1.left_bumper) { robot.setArmActuatorPower(0.75f); armMoving = true; }
+            else if (gamepad1.right_bumper) { robot.setArmActuatorPower(-0.75f); armMoving = true; }
+            else {
+                robot.setArmActuatorPower(0);
+                armMoving = false;
+            }
 
             if (gamepad1.x) { robot.setArmGrabberPower(0.75f); }
             else if (gamepad1.y) { robot.setArmGrabberPower(-0.75f); }
             else { robot.setArmGrabberPower(0); }
 
             // locking arm in place
+            if (!armMoving) {
+                System.out.println("Arm Pos:" + robot.getArmActuatorEncoderPos());
+                if (robot.getArmActuatorEncoderPos() < -6000) {
+                    robot.setArmActuatorPower(-0.5);
+                    System.out.println("Forward");
+                } else if (robot.getArmActuatorEncoderPos() > -6000) {
+                    robot.setArmActuatorPower(0.1); ///5969
+                    System.out.println("Backward");
+                }
+            }
 
 
 

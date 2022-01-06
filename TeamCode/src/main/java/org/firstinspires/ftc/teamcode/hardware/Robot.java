@@ -68,4 +68,6 @@ public class Robot {
     public int getRightEncoderPos() { return rightDrive1.getCurrentPosition(); }
 
     public int getArmActuatorEncoderPos() { return armActuator.getCurrentPosition(); }
+    public void calibrateArmActuatorEncoders() {  }
+
 }
