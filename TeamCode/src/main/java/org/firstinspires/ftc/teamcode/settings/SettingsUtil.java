@@ -20,9 +20,11 @@ public class SettingsUtil {
         translation = new ArrayList<>();
         translation.add("Dual Stick (Recommended)");
         translation.add("Single Stick");
+        translation.add("Single Stick (Flipped)");
         translation.add("DPad");
         translation.add("Battlefield Controls (gaymer moment)");
-        setting = new Setting("drive_mode", "Drive Mode", 4, translation);
+        translation.add("Southpaw Battlefield Controls");
+        setting = new Setting("drive_mode", "Drive Mode", 6, translation);
         settings.add(setting);
 
         // Spinner Direction
@@ -34,11 +36,13 @@ public class SettingsUtil {
 
         // Drive Speed
         translation = new ArrayList<>();
+        translation.add("6.25% (WHAT ARE YOU DOING");
+        translation.add("12.5% (Why?)");
         translation.add("25%");
         translation.add("50%");
         translation.add("75%");
         translation.add("100%");
-        setting = new Setting("drive_speed", "Drive Speed", 4, translation, 2);
+        setting = new Setting("drive_speed", "Drive Speed", 6, translation, 3);
         settings.add(setting);
 
         return new SettingsMenu(settings, telemetry, gamepad);

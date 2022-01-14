@@ -130,7 +130,7 @@ public class TeleMain extends OpMode
         float leftY = -gamepad1.left_stick_y;
         float rightY = -gamepad1.right_stick_y;
         float leftX = -gamepad1.left_stick_x;
-        //float rightX = -gamepad1.right_stick_x;  This isn't used, too bad!
+        float rightX = -gamepad1.right_stick_x;
         float RT = -gamepad1.right_trigger;
         float LT = -gamepad1.left_trigger;
         float leftPower = 0;
@@ -150,7 +150,14 @@ public class TeleMain extends OpMode
                 leftPower = (V + W) / 2;
                 rightPower = (V - W) / 2;
                 break;
-            case 2: // dpad - this is cursed, but zachs forcing my hand
+            case 2: // flipped single stick
+                rightX = -rightX;
+                V = (100 - Math.abs(rightX)) * (rightY / 100) + rightY;
+                W = (100 - Math.abs(rightY)) * (rightX/100) + rightX;
+                leftPower = (V + W) / 2;
+                rightPower = (V - W) / 2;
+                break;
+            case 3: // dpad - this is cursed, but zachs forcing my hand
                 leftX = 0;
                 leftY = 0;
                 if (gamepad1.dpad_up) {
@@ -170,7 +177,7 @@ public class TeleMain extends OpMode
                 leftPower = (V + W) / 2;
                 rightPower = (V - W) / 2;
                 break;
-            case 3: // battlefield controls (cursed) (2 hours later edit: this took way too long to figure out something this simple)
+            case 4: // battlefield controls (cursed) (2 hours later edit: this took way too long to figure out something this simple)
                 // another hour later, it took way too long to find out how to use the damn triggers (analog) instead of bumper (digital)
                 float TP = -RT + LT;
                 leftX = -leftX;
@@ -179,7 +186,14 @@ public class TeleMain extends OpMode
                 leftPower = (V + W);
                 rightPower = (V - W);
                 break;
-
+            case 5: // southpaw battlefield controls
+                TP = RT - LT;
+                rightX = -rightX;
+                V = (100 - Math.abs(rightX)) * (TP / 100) + TP;
+                W = (100 - Math.abs(TP)) * (rightX/100) + rightX;
+                leftPower = (V + W);
+                rightPower = (V - W);
+                break;
         }
 
         robot.setLeftDrivePower(leftPower * speedMultiplier);
