@@ -45,6 +45,15 @@ public class SettingsUtil {
         setting = new Setting("drive_speed", "Drive Speed", 6, translation, 3);
         settings.add(setting);
 
+        // Arm Grabber Speed
+        translation = new ArrayList<>();
+        translation.add("35%");
+        translation.add("50%");
+        translation.add("75%");
+        translation.add("100%");
+        setting = new Setting("grab_speed","Grabber Speed",4,translation,2);
+        settings.add(setting);
+
         return new SettingsMenu(settings, telemetry, gamepad);
     }
 

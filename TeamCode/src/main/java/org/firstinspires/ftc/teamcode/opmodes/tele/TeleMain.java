@@ -26,6 +26,7 @@ public class TeleMain extends OpMode
     // Settings Variables
     private int driveMode;
     private int driveSpeed;
+    private int grabSpeed;
 
     // Working Global Variables
     private int loop = 0;
@@ -47,6 +48,7 @@ public class TeleMain extends OpMode
     private void updateSettings() {
         driveMode = settings.getSetting("drive_mode");
         driveSpeed = settings.getSetting("drive_speed");
+        grabSpeed = settings.getSetting("grab_speed");
     }
 
     // Code to run ONCE when the driver hits PLAY
@@ -82,7 +84,7 @@ public class TeleMain extends OpMode
                 return;
             }
             // spinner controls
-            if (gamepad1.a) { robot.setSpinnerPower(1); }
+            if (gamepad1.x) { robot.setSpinnerPower(1); }
             else if (gamepad1.b) { robot.setSpinnerPower(-1); }
             else { robot.setSpinnerPower(0); }
 
@@ -96,9 +98,17 @@ public class TeleMain extends OpMode
                 armMoving = false;
             }
 
-            if (gamepad1.x) { robot.setArmGrabberPower(0.75f); }
-            else if (gamepad1.y) { robot.setArmGrabberPower(-0.75f); }
-            else { robot.setArmGrabberPower(0); }
+            float grabMultiplier = 0.25f * grabSpeed + 0.25f;
+            int grabber = 0;
+
+            if (gamepad1.y) {
+                grabber +=1;
+            }
+            if(gamepad1.a) {
+                grabber -=1;
+            }
+            robot.setArmGrabberPower(grabber * grabMultiplier);
+
 
             // locking arm in place
             if (!armMoving) {
