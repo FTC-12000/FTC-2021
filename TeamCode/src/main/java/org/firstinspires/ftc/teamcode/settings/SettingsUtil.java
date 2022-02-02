@@ -47,7 +47,7 @@ public class SettingsUtil {
 
         // Arm Grabber Speed
         translation = new ArrayList<>();
-        translation.add("35%");
+        translation.add("35% (25% grips nothing");
         translation.add("50%");
         translation.add("75%");
         translation.add("100%");

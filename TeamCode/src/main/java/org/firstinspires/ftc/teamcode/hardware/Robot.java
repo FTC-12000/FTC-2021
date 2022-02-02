@@ -1,8 +1,8 @@
 package org.firstinspires.ftc.teamcode.hardware;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 
 /*
 * This class holds all of the hardware (and setup code) for the robot.
@@ -18,8 +18,11 @@ public class Robot {
     private DcMotor spinner;
 
     // Arm Motors
-    private DcMotor armActuator;
+    public DcMotor armActuator;
     private DcMotor armGrabber;
+
+    // Sensors
+    private TouchSensor Button;
 
     public void init(HardwareMap hardwareMap) {
         // Initializing motors
@@ -43,7 +46,13 @@ public class Robot {
 
         armActuator.setDirection(DcMotor.Direction.FORWARD);
         armGrabber.setDirection(DcMotor.Direction.FORWARD);
+
+        // Button Map
+        Button = hardwareMap.get(TouchSensor.class,"reset_switch");
+
+
     }
+
 
     // region Wrappers for setting power level because we need to set 2 drive motors and it looks nicer
     public void setLeftDrivePower(double power) {
@@ -69,5 +78,8 @@ public class Robot {
 
     public int getArmActuatorEncoderPos() { return armActuator.getCurrentPosition(); }
     public void calibrateArmActuatorEncoders() {  }
+
+    // Button Wrapper
+    public boolean isPressed() { return Button.isPressed(); }
 
 }

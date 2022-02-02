@@ -2,9 +2,17 @@
 // i forgot i wrote this
 package org.firstinspires.ftc.teamcode.opmodes.tele;
 
+import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.RESET_ENCODERS;
+import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.RUN_USING_ENCODER;
+import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.STOP_AND_RESET_ENCODER;
+
+import android.widget.Button;
+
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.hardware.Robot;
@@ -84,16 +92,26 @@ public class TeleMain extends OpMode
                 return;
             }
             // spinner controls
-            if (gamepad1.x) { robot.setSpinnerPower(1); }
-            else if (gamepad1.b) { robot.setSpinnerPower(-1); }
-            else { robot.setSpinnerPower(0); }
+            if (gamepad1.x) {
+                robot.setSpinnerPower(1);
+            } else if (gamepad1.y) {
+                robot.setSpinnerPower(-1);
+            } else {
+                robot.setSpinnerPower(0);
+            }
 
             // arm controls
+
+
             boolean armMoving = false;
             int armTarget = 0;
-            if (gamepad1.left_bumper) { robot.setArmActuatorPower(0.75f); armMoving = true; }
-            else if (gamepad1.right_bumper) { robot.setArmActuatorPower(-0.75f); armMoving = true; }
-            else {
+            if (gamepad1.left_bumper) {
+                robot.setArmActuatorPower(0.50f);
+                armMoving = true;
+            } else if (gamepad1.right_bumper) {
+                robot.setArmActuatorPower(-0.50f);
+                armMoving = true;
+            } else {
                 robot.setArmActuatorPower(0);
                 armMoving = false;
             }
@@ -101,28 +119,22 @@ public class TeleMain extends OpMode
             float grabMultiplier = 0.25f * grabSpeed + 0.25f;
             int grabber = 0;
 
-            if (gamepad1.y) {
-                grabber +=1;
+            if (gamepad1.a) {
+                grabber += 1;
             }
-            if(gamepad1.a) {
-                grabber -=1;
+            if (gamepad1.b) {
+                grabber -= 1;
             }
             robot.setArmGrabberPower(grabber * grabMultiplier);
 
-
-            // locking arm in place
-            if (!armMoving) {
-                System.out.println("Arm Pos:" + robot.getArmActuatorEncoderPos());
-                if (robot.getArmActuatorEncoderPos() < -6000) {
-                    robot.setArmActuatorPower(-0.5);
-                    System.out.println("Forward");
-                } else if (robot.getArmActuatorEncoderPos() > -6000) {
-                    robot.setArmActuatorPower(0.1); ///5969
-                    System.out.println("Backward");
-                }
+            // Robot Encoder Reset Button
+            if (gamepad1.left_stick_button) {
+                robot.armActuator.setMode(STOP_AND_RESET_ENCODER);
+                robot.armActuator.setMode(RUN_USING_ENCODER);
             }
 
 
+            
 
             telemetry.clear();
             telemetry.addData("Left Encoder", robot.getLeftEncoderPos());
@@ -208,5 +220,15 @@ public class TeleMain extends OpMode
 
         robot.setLeftDrivePower(leftPower * speedMultiplier);
         robot.setRightDrivePower(rightPower * speedMultiplier);
+        // turbo button
+        if (gamepad1.back) {
+            robot.setRightDrivePower(rightPower * 100);
+            robot.setLeftDrivePower(leftPower * 100);
+        }
+        else {
+            robot.setLeftDrivePower(leftPower * speedMultiplier);
+            robot.setRightDrivePower(rightPower * speedMultiplier);
+        }
     }
+
 }
