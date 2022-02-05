@@ -86,17 +86,13 @@ public class TeleMain extends OpMode
                 robot.setArmActuatorPower(0);
                 armMoving = false;
             }
-
-            if (gamepad1.x) { robot.setArmGrabberPower(0.75f); }
-            else if (gamepad1.y) { robot.setArmGrabberPower(-0.75f); }
-            else { robot.setArmGrabberPower(0); }
             float grabMultiplier = 0.25f * grabSpeed + 0.25f;
             int grabber = 0;
 
             if (gamepad1.y) {
                 grabber +=1;
             }
-            if(gamepad1.a) {
+            if(gamepad1.x) {
                 grabber -=1;
             }
             robot.setArmGrabberPower(grabber * grabMultiplier);
@@ -112,11 +108,11 @@ public class TeleMain extends OpMode
             if (!armMoving) {
                 System.out.println("Arm Pos:" + robot.getArmActuatorEncoderPos());
                 if (robot.getArmActuatorEncoderPos() < -2750) {
-                    robot.setArmActuatorPower(-0.5);
-                    System.out.println("Forward");
-                } else if (robot.getArmActuatorEncoderPos() > -2750) {
-                    robot.setArmActuatorPower(0.1); ///5969
+                    robot.setArmActuatorPower(0.37);
                     System.out.println("Backward");
+                } else if (robot.getArmActuatorEncoderPos() > -2750) {
+                    robot.setArmActuatorPower(-0.15); ///5969
+                    System.out.println("Forward");
                 }
             }
             telemetry.clear();
